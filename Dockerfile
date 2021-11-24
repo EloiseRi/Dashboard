@@ -1,21 +1,17 @@
 FROM node:alpine
 
-RUN mkdir -p /usr/src/app
-
-ENV PORT 3000
-
+# Create app directory & move in
 WORKDIR /usr/src/app
 
-COPY package*.json /usr/src/app/
-
+# Installing dependencies
+COPY package*.json ./
 RUN npm install
 
-COPY . /usr/src/app/
+# Copying source files
+COPY . .
 
-RUN npm run build
+# Building the app
+EXPOSE 8080
 
-EXPOSE 3000
-
-USER node
-
-ENTRYPOINT ["npm", "run"]
+# Running the app
+ENTRYPOINT [ "npm", "run" ]

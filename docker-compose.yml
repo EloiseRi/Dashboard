@@ -2,6 +2,10 @@ version: '3'
 services:
   dashboard:
     build:
-      context: .
+      context: ./
+      dockerfile: Dockerfile
+    command: npm run dev
     ports:
-      - "8080:3000"
+      - "8080:8080"
+    env_file:
+      - .env.local
