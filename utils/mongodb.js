@@ -19,6 +19,7 @@ let cachedDb = null;
 export async function connectToDatabase() {
     // check the cached.
     if (cachedClient && cachedDb) {
+        console.log('👌 Using existing connection');
         // load from cache
         return {
             client: cachedClient,
@@ -40,6 +41,7 @@ export async function connectToDatabase() {
     // set cache
     cachedClient = client;
     cachedDb = db;
+    console.log('🔥 New DB Connection');
 
     return {
         client: cachedClient,
