@@ -1,21 +1,20 @@
 FROM node:alpine
 
-RUN mkdir -p /usr/src/app
+# Create app directory & move in
+WORKDIR /app
 
-ENV PORT 3000
-
-WORKDIR /usr/src/app
-
-COPY package*.json /usr/src/app/
-
+# Installing dependencies
+COPY package*.json ./
 RUN npm install
 
-COPY . /usr/src/app/
+RUN mkdir /app/.next && chmod -R 777 /app/.next
 
+# Copying source files
+COPY . /app
+
+# Building the app
 RUN npm run build
-
 EXPOSE 3000
 
-USER node
-
-ENTRYPOINT ["npm", "run"]
+# Running the app
+ENTRYPOINT [ "npm", "run" ]

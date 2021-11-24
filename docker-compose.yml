@@ -2,6 +2,9 @@ version: '3'
 services:
   dashboard:
     build:
-      context: .
+      context: ./
+      dockerfile: Dockerfile
     ports:
       - "8080:3000"
+    env_file:
+      - .env.local
