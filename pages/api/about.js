@@ -16,6 +16,4 @@ export default async function about(req, res) {
   }, {});
 
   return res.json(formatted);
-
-  // return res.status(200).json(data)
 };
