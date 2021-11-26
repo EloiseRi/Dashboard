@@ -1,10 +1,10 @@
-import styles from "../styles/Home.module.css";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import Link from "next/link";
 
 const Index = ({ user }) => {
+  console.log(user)
   return (
-    <div className={styles.container}>
+    <div>
       <p>
         Welcome {user.name}!{" "}
         <Link href="/api/auth/logout">
