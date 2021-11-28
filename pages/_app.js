@@ -1,11 +1,12 @@
-import '../styles/globals.css'
+import 'tailwindcss/tailwind.css'
 import React from "react";
 import { UserProvider } from "@auth0/nextjs-auth0";
+import Navigation from '../components/navigation.js';
 
 const App = ({ Component, pageProps }) => {
   return (
     <UserProvider>
-      <Component {...pageProps} />
+      <Navigation {...pageProps} />
     </UserProvider>
   );
 };

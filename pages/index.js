@@ -1,17 +1,12 @@
-import styles from "../styles/Home.module.css";
-import { withPageAuthRequired } from "@auth0/nextjs-auth0";
-import Link from "next/link";
+import { withPageAuthRequired  } from "@auth0/nextjs-auth0";
+import Navigation from '../components/navigation.js';
 
 const Index = ({ user }) => {
+
   return (
-    <div className={styles.container}>
-      <p>
-        Welcome {user.name}!{" "}
-        <Link href="/api/auth/logout">
-          <a>Logout</a>
-        </Link>
-      </p>
-    </div>
+    <>
+      <Navigation {...user} />
+    </>
   );
 };
 
