@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { useUser } from "@auth0/nextjs-auth0";
 import Image from 'next/image';
 
 export default class Navigation extends Component {
@@ -11,7 +12,6 @@ export default class Navigation extends Component {
   }
 
   DisplayDrawer() {
-    console.log(this.state.displayDrawer)
     this.setState((prevState) => {
       return {displayDrawer: !prevState.displayDrawer}
     });
