@@ -1,15 +1,14 @@
-import { withPageAuthRequired  } from "@auth0/nextjs-auth0";
-import Navigation from '../components/navigation.js';
+import React from 'react';
 
-const Index = ({ user }) => {
+import Hero from '../components/Hero';
+import Content from '../components/Content';
 
+export default function Index() {
   return (
     <>
-      <Navigation {...user} />
+      <Hero />
+      <hr />
+      <Content />
     </>
   );
-};
-
-export const getServerSideProps = withPageAuthRequired();
-
-export default Index;
+}
