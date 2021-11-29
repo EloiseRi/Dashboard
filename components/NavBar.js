@@ -43,10 +43,9 @@ const NavBar = () => {
       <div className="flex items-center">
         <div className="hidden md:flex md:justify-between md:bg-transparent">
           {!isLoading && !user && (
-            <button>
+            <button className="bg-transparent hover:bg-purple-500 text-purple-700 font-semibold hover:text-white py-2 px-4 border border-purple-500 hover:border-transparent rounded">
               <Link
                 href="/api/auth/login"
-                className="btn btn-primary btn-margin"
                 tabIndex={0}
                 testId="navbar-login-desktop"
               >
@@ -150,7 +149,7 @@ const NavBar = () => {
       >
         <span
           onClick={toggle}
-          className="flex w-full items-center p-2 border-b h-20"
+          className="flex items-center ml-4 p-2 border-b h-20"
         >
           <svg
             fill="none"
@@ -181,7 +180,7 @@ const NavBar = () => {
               <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
             </svg>
           </span>
-          <span>Profile</span>
+          <span>Home</span>
         </span>
         <span
           onClick={toggle}
@@ -221,25 +220,6 @@ const NavBar = () => {
           </span>
           <span>About</span>
         </span>
-        {/* <span
-          onClick={toggle}
-          className="flex items-center p-4 hover:bg-indigo-500 hover:text-white "
-        >
-          <span className="mr-2">
-            <svg
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              className="w-6 h-6"
-            >
-              <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-            </svg>
-          </span>
-          <span>Contact</span>
-        </span> */}
       </aside>
     </nav>
   );
