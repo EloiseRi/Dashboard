@@ -1,4 +1,3 @@
-import React from "react";
 import { withPageAuthRequired, useUser } from "@auth0/nextjs-auth0";
 
 import Hero from "../components/Hero";
@@ -7,25 +6,24 @@ import Dashboard from "../components/Dashboard";
 
 export default function Index({ widgets }) {
   const { user, isLoading } = useUser();
-  widgets = JSON.parse(widgets)
+
+  widgets = JSON.parse(widgets);
+
+  async function refreshHandler() {
+    await fetch("http://localhost:8080/api/widgets/add", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: "test", auth: false }),
+    });
+  
+    window.location.reload();
+  }
 
   return (
     <>
       {!isLoading && user && (
         <div>
-          <Dashboard widgets={widgets} />
-          <button
-            onClick={async (e) => {
-              e.preventDefault();
-              await fetch("http://localhost:8080/api/widgets/add", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ name: "test", auth: false }),
-              });
-            }}
-          >
-            Add mes couilles
-          </button>
+          <Dashboard widgets={widgets} handleClick={refreshHandler}/>
         </div>
       )}
       {!user && (
