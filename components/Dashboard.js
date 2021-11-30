@@ -1,4 +1,4 @@
-import Widget from "./Widget";
+import WWeather from "./widgets/WWeather";
 
 const Dashboard = ({ widgets, handleClick }) => {
 
@@ -7,9 +7,9 @@ const Dashboard = ({ widgets, handleClick }) => {
       <h1 className="mb-4">Octoboard Project</h1>
       <div>
         {" "}
-        {widgets.map((w, index) => (
-          <Widget key={index} params={w} />
-        ))}{" "}
+        {widgets.map((w, index) => {
+          if (w.api_name == 'weather') return <WWeather key={index} params={w} />
+        })}{" "}
       </div>
 
       <button
