@@ -23,7 +23,7 @@ export default async function handler(req, res) {
         response = await db.collection("widgets").updateOne(
           { _id: _idObj },
           {
-            $set: { params: { city: req.body.city } },
+            $set: { "params.city": req.body.city },
           }
         );
         res.status(200).json(response);

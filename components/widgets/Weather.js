@@ -17,6 +17,7 @@ const useFindWeather = (props) => {
           );
           let result = await response.json();
           setData(result);
+          return;
         }
         if (type == "weekly") {
           let response = await fetch(
@@ -24,8 +25,8 @@ const useFindWeather = (props) => {
           );
           let result = await response.json();
           setData(result);
+          return;
         }
-        return;
       } catch (e) {
         console.error(e);
       }
@@ -51,7 +52,7 @@ const Weather = (props) => {
         city: city,
       }),
     });
-    setUpdate(!update)
+    setUpdate(!update);
   };
 
   useEffect(() => {
