@@ -1,24 +1,20 @@
-import WWeather from "./widgets/WWeather";
+import Weather from "./widgets/Weather";
+import Clock from "./widgets/Clock";
+import Crypto from "./widgets/Crypto";
 
-const Dashboard = ({ widgets, handleClick }) => {
+const Dashboard = ({ widgets }) => {
 
   return (
     <div className="my-20 text-center">
       <h1 className="mb-4">Octoboard Project</h1>
       <div>
         {" "}
-        {widgets.map((w, index) => {
-          if (w.api_name == 'weather') return <WWeather key={index} params={w} />
+        {widgets.map((widget, index) => {
+          if (widget.api_name == 'weather') return <Weather key={index} params={widget} />
+          if (widget.api_name == 'clock') return <Clock key={index} params={widget} />
+          if (widget.api_name == 'crypto') return <Crypto key={index} params={widget} />
         })}{" "}
       </div>
-
-      <button
-        onClick={(e) => {
-          handleClick()
-        }}
-      >
-        Add Widget
-      </button>
     </div>
   );
 };
