@@ -3,8 +3,8 @@ import WWeather from "./widgets/WWeather";
 const Dashboard = ({ widgets, handleClick }) => {
 
   return (
-    <div className="my-20 text-center">
-      <h1 className="mb-4">Octoboard Project</h1>
+    <div class="my-20 text-center">
+      <h1 class ="mb-4">Octoboard Project</h1>
       <div>
         {" "}
         {widgets.map((w, index) => {
