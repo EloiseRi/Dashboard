@@ -69,6 +69,7 @@ const Crypto = (props) => {
         pair: symbol
       }),
     });
+    window.location.reload();
   };
   const handleChange = async (e) => setSymbol(e.target.value);
 
