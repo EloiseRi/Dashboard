@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Clock = () => {
+  const [update, setUpdate] = useState(false);
   const [continent, setContinent] = useState("Europe");
   const [country, setCountry] = useState("Paris");
 
@@ -14,8 +15,11 @@ const Clock = () => {
         params: { continent: continent, country: country },
       }),
     });
-    window.location.reload();
+    setUpdate(!update);
   };
+
+  useEffect(() => {}, [update]);
+
 
   return (
     <div className="text-center">

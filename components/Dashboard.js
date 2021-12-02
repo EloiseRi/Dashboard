@@ -2,6 +2,7 @@ import Weather from "./widgets/Weather";
 import Clock from "./widgets/Clock";
 import Crypto from "./widgets/Crypto";
 import Movies from "./widgets/Movies";
+// import Spotify from "./widgets/Spotify";
 
 const Dashboard = ({ widgets }) => {
 
@@ -15,6 +16,7 @@ const Dashboard = ({ widgets }) => {
           if (widget.api_name == 'clock') return <Clock key={index} params={widget} />
           if (widget.api_name == 'crypto') return <Crypto key={index} params={widget} />
           if (widget.api_name == 'movies') return <Movies key={index} params={widget} />
+          {/* if (widget.api_name == 'spotify') return <Spotify key={index} params={widget} /> */}
         })}{" "}
       </div>
     </div>

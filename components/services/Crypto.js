@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Crypto = () => {
+  const [update, setUpdate] = useState(false);
   const [pair, setPair] = useState("ETHUSD");
 
   const addWidget = async (pair) => {
@@ -13,8 +14,10 @@ const Crypto = () => {
         params: { pair: pair },
       }),
     });
-    window.location.reload();
+    setUpdate(!update);
   };
+
+  useEffect(() => {}, [update]);
 
   return (
     <div className="text-center">

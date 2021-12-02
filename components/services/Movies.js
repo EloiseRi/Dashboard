@@ -13,7 +13,6 @@ const Movies = () => {
       }),
     });
     setUpdate(!update);
-    // window.location.reload();
   };
 
   useEffect(() => {}, [update]);

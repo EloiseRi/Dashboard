@@ -4,6 +4,7 @@ import Weather from "./services/Weather";
 import Clock from "./services/Clock";
 import Crypto from "./services/Crypto";
 import Movies from "./services/Movies";
+import Spotify from "./services/Spotify";
 
 Modal.setAppElement("#__next");
 
@@ -55,7 +56,7 @@ const WidgetModal = (props) => {
           {type == "clock" && <Clock />}
           {type == "crypto" && <Crypto />}
           {type == "movies" && <Movies />}
-          {type == "spotify" && <div>Spotify</div>}
+          {type == "spotify" && <Spotify />}
         </div>
       )}
     </Modal>

@@ -11,7 +11,6 @@ const useFindMovies = (props) => {
     data,
     findMovies: async () => {
       try {
-        console.log(type);
         const res = await fetch(
           `https://api.themoviedb.org/3/movie/${type}?api_key=${process.env.moviesKey}&language=en-US&page=1`
         );
@@ -49,12 +48,9 @@ const Movies = (props) => {
       });
 
       findMovies(type);
-      setUpdate(!update);
     }
     fetchData();
   }, [type]);
-
-  console.log(data);
 
   return (
     <div>

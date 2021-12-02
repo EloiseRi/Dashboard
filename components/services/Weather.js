@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Weather = () => {
+  const [update, setUpdate] = useState(false);
   const [city, setCity] = useState("Nice");
 
   const addWidget = async (city, type) => {
@@ -13,8 +14,10 @@ const Weather = () => {
         params: { city: city, type: type },
       }),
     });
-    window.location.reload();
+    setUpdate(!update);
   };
+
+  useEffect(() => {}, [update]);
 
   return (
     <div className="text-center">
