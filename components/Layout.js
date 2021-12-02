@@ -12,7 +12,7 @@ const Layout = ({ children }) => (
     </Head>
     <main id="app" className="flex flex-col h-screen justify-between">
       <NavBar />
-      <div className="bg-gray-100 flex-grow-1 mt-5">{children}</div>
+      <div className="bg-gray-300 flex-grow-1 mt-5">{children}</div>
       <Footer />
     </main>
   </>

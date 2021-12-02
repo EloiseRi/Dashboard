@@ -3,9 +3,9 @@ import WWeather from "./widgets/WWeather";
 const Dashboard = ({ widgets, handleClick }) => {
 
   return (
-    <div class="my-20 text-center">
-      <h1 class ="mb-4">Octoboard Project</h1>
-      <div>
+    <div className="my-20 text-center">
+      <h1 className="mb-4">Octoboard Project</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-3">
         {" "}
         {widgets.map((w, index) => {
           if (w.api_name == 'weather') return <WWeather key={index} params={w} />

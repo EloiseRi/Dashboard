@@ -74,3 +74,39 @@ const WWeather = (props) => {
 };
 
 export default WWeather;
+
+
+// import '../css/grid.css'
+// import React, { Component } from "react";
+// import '/node_modules/react-grid-layout/css/styles.css';
+// import '/node_modules/react-resizable/css/styles.css';
+// import GridLayout from 'react-grid-layout';
+
+// export default class Grid extends React.Component {
+//   render() {
+//     // layout is an array of objects, see the demo for more complete usage
+//     const layout = [
+//       {i: 'a', x: 0, y: 0, w: 1, h: 2,},
+//       {i: 'b', x: 1, y: 0, w: 3, h: 2, minW: 2, maxW: 4},
+//       {i: 'c', x: 3, y: 0, w: 1, h: 2},
+//       {i: 'd', x: 0, y: 0, w: 1, h: 2},
+//       {i: 'e', x: 2, y: 0, w: 1, h: 2},
+//       {i: 'f', x: 4, y: 0, w: 1, h: 2},
+//       {i: 'g', x: 13, y: 0, w: 1, h: 2},
+//       {i: 'h', x: 4, y: 0, w: 1, h: 2},
+//     ];
+//     return (
+//       <GridLayout className="layout" layout={layout} cols={12} rowHeight={60} width={1700}>
+//         <div key="a">Temperature</div>
+//         <div key="b">User</div>
+//         <div key="c">Twitter</div>
+//         <div key="d">facebook</div>
+//         <div key="e">Actualités</div>
+//         <div key="f">c</div>
+//         <div key="g">c</div>
+//         <div key="h">c</div>
+
+//       </GridLayout>
+//     )
+//   }
+// }
