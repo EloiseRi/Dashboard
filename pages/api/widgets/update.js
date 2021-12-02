@@ -5,11 +5,11 @@ const { ObjectId } = require("mongodb");
 export default async function handler(req, res) {
   try {
     const { db } = await connectToDatabase();
-    const { type } = req.body;
+    const { req_type } = req.body;
     const _idObj = ObjectId(req.body._id);
     let response = null;
 
-    switch (type) {
+    switch (req_type) {
       case "CRYPTO":
         response = await db.collection("widgets").updateOne(
           { _id: _idObj },
@@ -18,7 +18,7 @@ export default async function handler(req, res) {
           }
         );
         res.status(200).json(response);
-
+        break;
       case "WEATHER":
         response = await db.collection("widgets").updateOne(
           { _id: _idObj },
@@ -27,6 +27,16 @@ export default async function handler(req, res) {
           }
         );
         res.status(200).json(response);
+        break;
+      case "MOVIES":
+        response = await db.collection("widgets").updateOne(
+          { _id: _idObj },
+          {
+            $set: { "params.type": req.body.type },
+          }
+        );
+        res.status(200).json(response);
+        break;
     }
   } catch (error) {
     res.status(error.status || 500).json({ error: error.message });

@@ -47,7 +47,7 @@ const Weather = (props) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        type: "WEATHER",
+        req_type: "WEATHER",
         _id: widgetId,
         city: city,
       }),

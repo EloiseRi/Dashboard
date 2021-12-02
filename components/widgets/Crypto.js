@@ -64,7 +64,7 @@ const Crypto = (props) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        type: 'CRYPTO',
+        req_type: 'CRYPTO',
         _id: widgetId,
         pair: symbol
       }),

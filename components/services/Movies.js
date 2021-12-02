@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Movies = () => {
+  const [update, setUpdate] = useState(false);
   const addWidget = async (type) => {
     await fetch("/api/widgets/add", {
       method: "POST",
@@ -11,8 +12,11 @@ const Movies = () => {
         params: { type: type },
       }),
     });
-    window.location.reload();
+    setUpdate(!update);
+    // window.location.reload();
   };
+
+  useEffect(() => {}, [update]);
 
   return (
     <div className="text-center">
@@ -20,8 +24,8 @@ const Movies = () => {
 
       <div className="mt-12 grid grid-cols-2 gap-4">
         <button onClick={() => addWidget("popular")}>Popular Movies</button>
-        <button onClick={() => addWidget("top")}>Top Rated Movies</button>
-        <button onClick={() => addWidget("now")}>In Theaters Now</button>
+        <button onClick={() => addWidget("top_rated")}>Top Rated Movies</button>
+        <button onClick={() => addWidget("now_playing")}>In Theaters Now</button>
         <button onClick={() => addWidget("upcoming")}>Upcoming Movies</button>
       </div>
     </div>
