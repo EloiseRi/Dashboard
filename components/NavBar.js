@@ -144,7 +144,7 @@ const NavBar = () => {
         </div>
       </div>
       <SideBar isOpen={isOpen} toggle={toggle} toggleModal={toggleModal}/>
-      <WidgetModal openModal={openModal} />
+      <WidgetModal openModal={openModal} toggleModal={toggleModal} />
     </nav>
   );
 };

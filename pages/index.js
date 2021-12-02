@@ -4,26 +4,16 @@ import Hero from "../components/Hero";
 import Content from "../components/Content";
 import Dashboard from "../components/Dashboard";
 
-export default function Index({ widgets }) {
+export default function Index({ widgetsFromDB }) {
   const { user, isLoading } = useUser();
 
-  widgets = JSON.parse(widgets);
-
-  async function refreshHandler() {
-    await fetch("http://localhost:8080/api/widgets/add", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: "test", auth: false }),
-    });
-  
-    window.location.reload();
-  }
+  widgetsFromDB = JSON.parse(widgetsFromDB);
 
   return (
     <>
       {!isLoading && user && (
         <div>
-          <Dashboard widgets={widgets} handleClick={refreshHandler}/>
+          <Dashboard widgets={widgetsFromDB} />
         </div>
       )}
       {!user && (
@@ -46,7 +36,7 @@ export const getServerSideProps = withPageAuthRequired({
 
     return {
       props: {
-        widgets: JSON.stringify(formatted),
+        widgetsFromDB: JSON.stringify(formatted),
       },
     };
   },

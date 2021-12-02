@@ -1,6 +1,10 @@
 import Modal from "react-modal";
 import { useState } from "react";
-import Weather from "./Weather";
+import Weather from "./services/Weather";
+import Clock from "./services/Clock";
+import Crypto from "./services/Crypto";
+import Movies from "./services/Movies";
+import Spotify from "./services/Spotify";
 
 Modal.setAppElement("#__next");
 
@@ -24,6 +28,7 @@ const WidgetModal = (props) => {
     <Modal isOpen={props.openModal} style={customStyles}>
       {!type && (
         <div className="text-center">
+          <button onClick={props.toggleModal}>X</button>
           <h1 className="text-xl">SERVICES</h1>
           <div className="mt-12 grid grid-cols-3 gap-4">
             <div onClick={() => setType("weather")} className="border-2">
@@ -35,8 +40,8 @@ const WidgetModal = (props) => {
             <div onClick={() => setType("crypto")} className="border-2">
               Crypto Market
             </div>
-            <div onClick={() => setType("fbi")} className="border-2">
-              Most Wanted - FBI
+            <div onClick={() => setType("movies")} className="border-2">
+              The Movie DB
             </div>
             <div onClick={() => setType("spotify")} className="border-2">
               Spotify
@@ -48,10 +53,10 @@ const WidgetModal = (props) => {
         <div>
           <button onClick={() => setType(null)}>X</button>
           {type == "weather" && <Weather />}
-          {type == "clock" && <div>Clock</div>}
-          {type == "crypto" && <div>Crypto Market</div>}
-          {type == "fbi" && <div>Most Wanted - FBI</div>}
-          {type == "spotify" && <div>Spotify</div>}
+          {type == "clock" && <Clock />}
+          {type == "crypto" && <Crypto />}
+          {type == "movies" && <Movies />}
+          {type == "spotify" && <Spotify />}
         </div>
       )}
     </Modal>
