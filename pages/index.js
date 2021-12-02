@@ -1,31 +1,19 @@
-import React from "react";
 import { withPageAuthRequired, useUser } from "@auth0/nextjs-auth0";
 
 import Hero from "../components/Hero";
 import Content from "../components/Content";
 import Dashboard from "../components/Dashboard";
 
-export default function Index({ widgets }) {
+export default function Index({ widgetsFromDB }) {
   const { user, isLoading } = useUser();
-  widgets = JSON.parse(widgets)
+
+  widgetsFromDB = JSON.parse(widgetsFromDB);
 
   return (
     <>
       {!isLoading && user && (
         <div>
-          <Dashboard widgets={widgets} />
-          <button
-            onClick={async (e) => {
-              e.preventDefault();
-              await fetch("http://localhost:8080/api/widgets/add", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ name: "test", auth: false }),
-              });
-            }}
-          >
-            Add mes couilles
-          </button>
+          <Dashboard widgets={widgetsFromDB} />
         </div>
       )}
       {!user && (
@@ -48,7 +36,7 @@ export const getServerSideProps = withPageAuthRequired({
 
     return {
       props: {
-        widgets: JSON.stringify(formatted),
+        widgetsFromDB: JSON.stringify(formatted),
       },
     };
   },
