@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Clock = () => {
-  const [update, setUpdate] = useState(false);
+const Clock = (props) => {
   const [continent, setContinent] = useState("Europe");
   const [country, setCountry] = useState("Paris");
 
@@ -15,11 +14,16 @@ const Clock = () => {
         params: { continent: continent, country: country },
       }),
     });
-    setUpdate(!update);
   };
 
-  useEffect(() => { }, [update]);
+  useEffect(() => {}, []);
 
+  const handleClick = () => {
+    addWidget(continent, country);
+    props.toggleModal();
+    props.resetServiceType(null);
+    props.refreshData();
+  };
 
   return (
     <div className=" text-center">
@@ -36,7 +40,7 @@ const Clock = () => {
         placeholder="Paris"
         onChange={(e) => setCountry(e.target.value)}
       />
-      <button className="mx-auto my-8 bg-gray-400 p-3 rounded-2xl text-white hover:text-purple-300" onClick={() => addWidget(continent, country)}>Create Widget</button>
+      <button className="mx-auto my-8 bg-gray-400 p-3 rounded-2xl text-white hover:text-purple-300" onClick={handleClick}>Create Widget</button>
     </div>
   );
 };

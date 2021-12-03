@@ -24,7 +24,7 @@ const customStyles = {
   },
 };
 
-const WidgetModal = (props) => {
+const WidgetModal = ({ openModal, toggleModal, refreshData }) => {
   const [type, setType] = useState(null);
   // const layout = [
   //   { i: 'a', x: 0, y: 0, w: 2, h: 4, },
@@ -36,11 +36,11 @@ const WidgetModal = (props) => {
 
   // ];
   return (
-    <Modal isOpen={props.openModal} style={customStyles}>
+    <Modal isOpen={openModal} style={customStyles}>
       {!type && (
         <div className="sm:h-full bg-purple-50 rounded-2xl text-center p-4 pt-7">
           <div className="w-20 flex flex-row text-left text-purple-400">
-            <button onClick={props.toggleModal}>X</button>
+            <button onClick={toggleModal}>X</button>
           </div>
           <h1 className="text-2xl mb-2">SERVICES</h1>
           <div className=" mt-8 ml-10 mr-10 grid grid-cols-3 gap-3">
@@ -63,19 +63,30 @@ const WidgetModal = (props) => {
         </div>
       )}
       {type && (
-      // <GridLayout classNameName="layout" layout={layout} cols={8} rowHeight={30} width={1700}>
+        // <GridLayout classNameName="layout" layout={layout} cols={8} rowHeight={30} width={1700}>
 
         <div className="sm:h-full bg-purple-50 rounded-2xl text-center p-4 pt-7">
           <div className="w-20 flex flex-row text-left text-purple-400 p-8">
             <button onClick={() => setType(null)}>X</button>
           </div>
-          {type == "weather" && <Weather />}
-          {type == "clock" && <Clock />}
-          {type == "crypto" && <Crypto  />}
-          {type == "movies" && <Movies />}
-          {type == "spotify" && <Spotify />}
+          {type == "weather" && (
+            <Weather toggleModal={toggleModal} resetServiceType={setType} refreshData={refreshData} />
+          )}
+          {type == "clock" && (
+            <Clock toggleModal={toggleModal} resetServiceType={setType} refreshData={refreshData} />
+          )}
+          {type == "crypto" && (
+            <Crypto toggleModal={toggleModal} resetServiceType={setType} refreshData={refreshData} />
+          )}
+          {type == "movies" && (
+            <Movies toggleModal={toggleModal} resetServiceType={setType} refreshData={refreshData} />
+          )}
+          {type == "spotify" && (
+            <Spotify toggleModal={toggleModal} resetServiceType={setType} refreshData={refreshData} />
+          )}
+          <div>
+          </div>
         </div>
-        // </GridLayout>
       )}
     </Modal>
   );

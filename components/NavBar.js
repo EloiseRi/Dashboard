@@ -5,9 +5,9 @@ import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0";
 import AnchorLink from "./AnchorLink";
 import WidgetModal from "./Modal";
-import SideBar from './SideBar';
+import SideBar from "./SideBar";
 
-const NavBar = () => {
+const NavBar = ({ refreshData }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const { user, isLoading } = useUser();
@@ -143,8 +143,8 @@ const NavBar = () => {
           )}
         </div>
       </div>
-      <SideBar isOpen={isOpen} toggle={toggle} toggleModal={toggleModal}/>
-      <WidgetModal openModal={openModal} toggleModal={toggleModal} />
+      <SideBar isOpen={isOpen} toggle={toggle} toggleModal={toggleModal} />
+      <WidgetModal openModal={openModal} toggleModal={toggleModal} refreshData={refreshData}/>
     </nav>
   );
 };

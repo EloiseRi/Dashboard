@@ -58,7 +58,7 @@ const Weather = (props) => {
   })
   const handleChange = async (e) => setCity(e.target.value);
   const handleSubmit = async () => {
-    fetchWeather(currentParams);
+    await fetchWeather();
     await fetch("/api/widgets/update", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -72,7 +72,7 @@ const Weather = (props) => {
   };
 
   useEffect(() => {
-    fetchWeather(currentParams.type, currentParams.city);
+    // fetchWeather(currentParams.type, currentParams.city);
     if (currentParams.type == 'daily' && data != null) {
       setDisplayDataD({ icon: data.weather[0].icon, city: data.name, temp: data.main.temp, weather: data.weather[0].main, humidity: data.main.humidity, date: moment().format('dddd'), day: moment().format('LL') })
     }
@@ -86,6 +86,10 @@ const Weather = (props) => {
         day: moment().format('LL')
       })
     }
+    async function fetchData() {
+      await fetchWeather();
+    }
+    fetchData();
   }, [update]);
 
 

@@ -1,4 +1,4 @@
-import { useEffect, useState, useStateCallback, Fragment } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 
 const useFindMovies = (props) => {
@@ -35,6 +35,10 @@ const Movies = (props) => {
     setUpdate(!update);
   };
 
+  const handleClick = async (e) => {
+    props.deleteWidget(widgetId);
+  };
+
   useEffect(() => {
     async function fetchData() {
       await fetch("/api/widgets/update", {
@@ -54,6 +58,7 @@ const Movies = (props) => {
 
   return (
     <div>
+      <button onClick={handleClick}>DELETE BUTTON</button>
       <h1>Movies</h1>
       <div className="w-56 fixed top-20 text-right">
         <Menu as="div" className="relative inline-block text-left">

@@ -58,6 +58,7 @@ const useFindTicker = (pair) => {
 
 const Crypto = (props) => {
   const [update, setUpdate] = useState(false);
+  const [value, setValue] = useState(new Date());
   let defaultPair = props.params.params.pair;
   let widgetId = props.params._id;
   const { find, symbol, setSymbol, data, error } = useFindTicker(defaultPair);
@@ -68,9 +69,9 @@ const Crypto = (props) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        req_type: 'CRYPTO',
+        req_type: "CRYPTO",
         _id: widgetId,
-        pair: symbol
+        pair: symbol,
       }),
     });
     setUpdate(!update);
@@ -79,7 +80,11 @@ const Crypto = (props) => {
 
   useEffect(() => {
     find();
-  }, [update]);
+    const interval = setInterval(() => setValue(new Date()), 10000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [update, value]);
 
   return (
     <>

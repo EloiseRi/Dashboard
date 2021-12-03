@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Crypto = () => {
-  const [update, setUpdate] = useState(false);
+const Crypto = (props) => {
   const [pair, setPair] = useState("ETHUSD");
 
   const addWidget = async (pair) => {
@@ -14,27 +13,31 @@ const Crypto = () => {
         params: { pair: pair },
       }),
     });
-    setUpdate(!update);
   };
 
-  useEffect(() => { }, [update]);
+  useEffect(() => { }, []);
+
+  const handleClick = () => {
+    addWidget(pair)
+    props.toggleModal()
+    props.resetServiceType(null);
+    props.refreshData();
+  }
 
   return (
     <div className="text-center">
       <h1 className="mb-2 text-3xl text-black">Crypto Market</h1>
       <label>Default pair :</label>
-     <div className="flex flex-col ">
+      <div className="flex flex-col ">
 
-      <input
-        className="mx-auto w-72 pl-2 mt-2 mb-6 py-2 rounded-xl"
-        type="text"
-        placeholder="ETHUSD"
-        onChange={(e) => setPair(e.target.value)}
-      />
-      <button className="mx-auto bg-gray-400 px-6 py-2 rounded-2xl text-white hover:text-purple-300" onClick={() => addWidget(pair)}>
-        Create Widget
-      </button>
-     </div>
+        <input
+          className="mx-auto w-72 pl-2 mt-2 mb-6 py-2 rounded-xl"
+          type="text"
+          placeholder="ETHUSD"
+          onChange={(e) => setPair(e.target.value)}
+        />
+        <button className="mx-auto bg-gray-400 px-6 py-2 rounded-2xl text-white hover:text-purple-300" onClick={handleClick}>Create Widget</button>
+      </div>
     </div>
   );
 };
