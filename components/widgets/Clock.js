@@ -16,13 +16,13 @@ const WClock = (props) => {
       );
       let data = await response.json();
       setData(data);
-      console.log(data)
+      // console.log(data)
     };
     fetchTimezone(currentParams.continent, currentParams.country);
     const interval = setInterval(
       () => setValue(new Date()),
-      console.log(data.utc_datetime + data.utc_offset),
-      console.log(Date()),
+      // console.log(data.utc_datetime + data.utc_offset),
+      // console.log(Date()),
       1000
     );
     return () => {
@@ -32,13 +32,12 @@ const WClock = (props) => {
 
   return (
     <div>
-      <h1>CLOCK</h1>
-      <div class="flex flex-col justify-center py-12">
-        <div class="relative max-w-xl mx-auto">
-          <div class="relative bg-white shadow-lg rounded-3xl p-8 bg-clip-padding bg-opacity-70 border border-gray-100">
-            <div class="mb-4">{moment().format('LTS')}</div>
+      <div className="flex flex-col justify-center py-12">
+        <div className="relative max-w-xl mx-auto">
+          <div className="relative bg-white shadow-lg rounded-3xl p-8 bg-clip-padding bg-opacity-60 border border-gray-100">
+            <div className="mb-4">{moment().format('LTS')}</div>
             <Clock value={value} />
-            <div class="mt-4">{data.timezone}</div>
+            <div className="mt-4">{data.timezone}</div>
           </div>
         </div>
       </div>
