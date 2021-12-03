@@ -17,20 +17,24 @@ const Crypto = () => {
     setUpdate(!update);
   };
 
-  useEffect(() => {}, [update]);
+  useEffect(() => { }, [update]);
 
   return (
     <div className="text-center">
-      <h1 className="text-xl">Crypto Market</h1>
+      <h1 className="mb-2 text-3xl text-black">Crypto Market</h1>
       <label>Default pair :</label>
+     <div className="flex flex-col ">
+
       <input
+        className="mx-auto w-72 pl-2 mt-2 mb-6 py-2 rounded-xl"
         type="text"
         placeholder="ETHUSD"
         onChange={(e) => setPair(e.target.value)}
       />
-      <button onClick={() => addWidget(pair)}>
+      <button className="mx-auto bg-gray-400 px-6 py-2 rounded-2xl text-white hover:text-purple-300" onClick={() => addWidget(pair)}>
         Create Widget
       </button>
+     </div>
     </div>
   );
 };

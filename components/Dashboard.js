@@ -3,9 +3,19 @@ import Clock from "./widgets/Clock";
 import Crypto from "./widgets/Crypto";
 import Movies from "./widgets/Movies";
 // import Spotify from "./widgets/Spotify";
+// import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 const Dashboard = ({ widgets }) => {
-
+  const layout = [
+    {i: 'a', x: 0, y: 0, w: 1, h: 2,},
+    {i: 'b', x: 1, y: 0, w: 3, h: 2, minW: 2, maxW: 4},
+    {i: 'c', x: 3, y: 0, w: 1, h: 2},
+    {i: 'd', x: 0, y: 0, w: 1, h: 2},
+    {i: 'e', x: 2, y: 0, w: 1, h: 2},
+    {i: 'f', x: 4, y: 0, w: 1, h: 2},
+    {i: 'g', x: 13, y: 0, w: 1, h: 2},
+    {i: 'h', x: 4, y: 0, w: 1, h: 2},
+  ];
   return (
     <div className="my-20 text-center">
       <h1 className="mb-4">Octoboard Project</h1>

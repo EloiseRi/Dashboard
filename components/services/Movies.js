@@ -19,13 +19,13 @@ const Movies = () => {
 
   return (
     <div className="text-center">
-      <h1 className="text-xl">The Movie DB</h1>
+      <h1 className="mb-2 text-3xl text-black">The Movie DB</h1>
 
       <div className="mt-12 grid grid-cols-2 gap-4">
-        <button onClick={() => addWidget("popular")}>Popular Movies</button>
-        <button onClick={() => addWidget("top_rated")}>Top Rated Movies</button>
-        <button onClick={() => addWidget("now_playing")}>In Theaters Now</button>
-        <button onClick={() => addWidget("upcoming")}>Upcoming Movies</button>
+        <button className="mx-auto my-3 bg-gray-400 p-3 rounded-2xl text-white hover:text-purple-300" onClick={() => addWidget("popular")}>Popular Movies</button>
+        <button className="mx-auto my-3 bg-gray-400 p-3 rounded-2xl text-white hover:text-purple-300" onClick={() => addWidget("top_rated")}>Top Rated Movies</button>
+        <button className="mx-auto my-3 bg-gray-400 p-3 rounded-2xl text-white hover:text-purple-300" onClick={() => addWidget("now_playing")}>In Theaters Now</button>
+        <button className="mx-auto my-3 bg-gray-400 p-3 rounded-2xl text-white hover:text-purple-300" onClick={() => addWidget("upcoming")}>Upcoming Movies</button>
       </div>
     </div>
   );
