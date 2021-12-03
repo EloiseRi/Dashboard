@@ -18,6 +18,7 @@ const Spotify = (props) => {
     addWidget();
     props.toggleModal();
     props.resetServiceType(null);
+    props.refreshData();
   }
 
   return (

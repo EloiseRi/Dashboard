@@ -5,7 +5,7 @@ import Crypto from "./widgets/Crypto";
 import Movies from "./widgets/Movies";
 import Spotify from "./widgets/Spotify";
 
-const Dashboard = ({ widgets }) => {
+const Dashboard = ({ widgets, refreshData }) => {
   const [update, setUpdate] = useState(false);
 
   const deleteWidget = async (widgetId) => {
@@ -57,6 +57,7 @@ const Dashboard = ({ widgets }) => {
             );
         })}{" "}
       </div>
+      <button onClick={() => refreshData()} >Refresh</button>
     </div>
   );
 };

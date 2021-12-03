@@ -21,6 +21,7 @@ const Weather = (props) => {
     addWidget(city, widgetType);
     props.toggleModal();
     props.resetServiceType(null);
+    props.refreshData();
   }
 
   return (

@@ -42,7 +42,7 @@ const Weather = (props) => {
 
   const handleChange = async (e) => setCity(e.target.value);
   const handleSubmit = async () => {
-    fetchWeather();
+    await fetchWeather();
     await fetch("/api/widgets/update", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -56,7 +56,10 @@ const Weather = (props) => {
   };
 
   useEffect(() => {
-    fetchWeather();
+    async function fetchData() {
+      await fetchWeather();
+    }
+    fetchData();
   }, [update]);
 
   return (

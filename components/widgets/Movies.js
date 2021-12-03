@@ -58,7 +58,7 @@ const Movies = (props) => {
 
   return (
     <div>
-      <button onClick={handleClick}>TEST</button>
+      <button onClick={handleClick}>DELETE BUTTON</button>
       <h1>Movies</h1>
       <div className="w-56 fixed top-20 text-right">
         <Menu as="div" className="relative inline-block text-left">

@@ -21,14 +21,14 @@ const customStyles = {
   },
 };
 
-const WidgetModal = (props) => {
+const WidgetModal = ({ openModal, toggleModal, refreshData }) => {
   const [type, setType] = useState(null);
 
   return (
-    <Modal isOpen={props.openModal} style={customStyles}>
+    <Modal isOpen={openModal} style={customStyles}>
       {!type && (
         <div className="text-center">
-          <button onClick={props.toggleModal}>X</button>
+          <button onClick={toggleModal}>X</button>
           <h1 className="text-xl">SERVICES</h1>
           <div className="mt-12 grid grid-cols-3 gap-4">
             <div onClick={() => setType("weather")} className="border-2">
@@ -53,31 +53,19 @@ const WidgetModal = (props) => {
         <div>
           <button onClick={() => setType(null)}>X</button>
           {type == "weather" && (
-            <Weather
-              toggleModal={props.toggleModal}
-              resetServiceType={setType}
-            />
+            <Weather toggleModal={toggleModal} resetServiceType={setType} refreshData={refreshData} />
           )}
           {type == "clock" && (
-            <Clock toggleModal={props.toggleModal} resetServiceType={setType} />
+            <Clock toggleModal={toggleModal} resetServiceType={setType} refreshData={refreshData} />
           )}
           {type == "crypto" && (
-            <Crypto
-              toggleModal={props.toggleModal}
-              resetServiceType={setType}
-            />
+            <Crypto toggleModal={toggleModal} resetServiceType={setType} refreshData={refreshData} />
           )}
           {type == "movies" && (
-            <Movies
-              toggleModal={props.toggleModal}
-              resetServiceType={setType}
-            />
+            <Movies toggleModal={toggleModal} resetServiceType={setType} refreshData={refreshData} />
           )}
           {type == "spotify" && (
-            <Spotify
-              toggleModal={props.toggleModal}
-              resetServiceType={setType}
-            />
+            <Spotify toggleModal={toggleModal} resetServiceType={setType} refreshData={refreshData} />
           )}
         </div>
       )}

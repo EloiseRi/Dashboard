@@ -22,6 +22,7 @@ const Clock = (props) => {
     addWidget(continent, country);
     props.toggleModal();
     props.resetServiceType(null);
+    props.refreshData();
   };
 
   return (

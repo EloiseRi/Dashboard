@@ -21,6 +21,7 @@ const Crypto = (props) => {
     addWidget(pair)
     props.toggleModal()
     props.resetServiceType(null);
+    props.refreshData();
   }
 
   return (

@@ -19,6 +19,7 @@ const Movies = (props) => {
     addWidget(type);
     props.toggleModal();
     props.resetServiceType(null);
+    props.refreshData();
   }
 
   return (
