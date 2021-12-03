@@ -25,7 +25,7 @@ const customStyles = {
 };
 
 const WidgetModal = (props) => {
-  // const [type, setType] = useState(null);
+  const [type, setType] = useState(null);
   // const layout = [
   //   { i: 'a', x: 0, y: 0, w: 2, h: 4, },
   //   { i: 'b', x: 0, y: 2, w: 2, h: 4, },
