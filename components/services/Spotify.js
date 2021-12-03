@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Spotify = () => {
-  const [update, setUpdate] = useState(false);
+const Spotify = (props) => {
   const addWidget = async () => {
     await fetch("/api/widgets/add", {
       method: "POST",
@@ -11,15 +10,20 @@ const Spotify = () => {
         auth_required: false,
       }),
     });
-    setUpdate(!update);
   };
 
-  useEffect(() => {}, [update]);
+  useEffect(() => {}, []);
+
+  const handleClick = () => {
+    addWidget();
+    props.toggleModal();
+    props.resetServiceType(null);
+  }
 
   return (
     <div className="text-center">
       <h1 className="text-xl">Spotify</h1>
-      <button onClick={() => addWidget()}>Create Widget</button>
+      <button onClick={handleClick}>Create Widget</button>
     </div>
   );
 };

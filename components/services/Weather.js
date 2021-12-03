@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Weather = () => {
-  const [update, setUpdate] = useState(false);
+const Weather = (props) => {
   const [city, setCity] = useState("Nice");
 
   const addWidget = async (city, type) => {
@@ -14,10 +13,15 @@ const Weather = () => {
         params: { city: city, type: type },
       }),
     });
-    setUpdate(!update);
   };
 
-  useEffect(() => {}, [update]);
+  useEffect(() => {}, []);
+
+  const handleClick = (widgetType) => {
+    addWidget(city, widgetType);
+    props.toggleModal();
+    props.resetServiceType(null);
+  }
 
   return (
     <div className="text-center">
@@ -28,8 +32,8 @@ const Weather = () => {
         onChange={(e) => setCity(e.target.value)}
       />
       <div className="mt-12 grid grid-cols-2 gap-4">
-        <button onClick={() => addWidget(city, "daily")}>Daily</button>
-        <button onClick={() => addWidget(city, "weekly")}>Weekly</button>
+        <button onClick={() => handleClick('daily')}>Daily</button>
+        <button onClick={() => handleClick('weekly')}>Weekly</button>
       </div>
     </div>
   );

@@ -1,5 +1,4 @@
 import { withPageAuthRequired, useUser } from "@auth0/nextjs-auth0";
-
 import Hero from "../components/Hero";
 import Content from "../components/Content";
 import Dashboard from "../components/Dashboard";

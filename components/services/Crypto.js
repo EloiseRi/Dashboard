@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Crypto = () => {
-  const [update, setUpdate] = useState(false);
+const Crypto = (props) => {
   const [pair, setPair] = useState("ETHUSD");
 
   const addWidget = async (pair) => {
@@ -14,10 +13,15 @@ const Crypto = () => {
         params: { pair: pair },
       }),
     });
-    setUpdate(!update);
   };
 
-  useEffect(() => {}, [update]);
+  useEffect(() => {}, []);
+
+  const handleClick = () => {
+    addWidget(pair)
+    props.toggleModal()
+    props.resetServiceType(null);
+  }
 
   return (
     <div className="text-center">
@@ -28,7 +32,7 @@ const Crypto = () => {
         placeholder="ETHUSD"
         onChange={(e) => setPair(e.target.value)}
       />
-      <button onClick={() => addWidget(pair)}>
+      <button onClick={handleClick}>
         Create Widget
       </button>
     </div>

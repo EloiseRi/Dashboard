@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Movies = () => {
-  const [update, setUpdate] = useState(false);
+const Movies = (props) => {
   const addWidget = async (type) => {
     await fetch("/api/widgets/add", {
       method: "POST",
@@ -12,20 +11,25 @@ const Movies = () => {
         params: { type: type },
       }),
     });
-    setUpdate(!update);
   };
 
-  useEffect(() => {}, [update]);
+  useEffect(() => {}, []);
+
+  const handleClick = (type) => {
+    addWidget(type);
+    props.toggleModal();
+    props.resetServiceType(null);
+  }
 
   return (
     <div className="text-center">
       <h1 className="text-xl">The Movie DB</h1>
 
       <div className="mt-12 grid grid-cols-2 gap-4">
-        <button onClick={() => addWidget("popular")}>Popular Movies</button>
-        <button onClick={() => addWidget("top_rated")}>Top Rated Movies</button>
-        <button onClick={() => addWidget("now_playing")}>In Theaters Now</button>
-        <button onClick={() => addWidget("upcoming")}>Upcoming Movies</button>
+        <button onClick={() => handleClick('popular')}>Popular Movies</button>
+        <button onClick={() => handleClick('top_rated')}>Top Rated Movies</button>
+        <button onClick={() => handleClick('now_playing')}>In Theaters Now</button>
+        <button onClick={() => handleClick('upcoming')}>Upcoming Movies</button>
       </div>
     </div>
   );

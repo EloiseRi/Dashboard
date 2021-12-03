@@ -52,11 +52,33 @@ const WidgetModal = (props) => {
       {type && (
         <div>
           <button onClick={() => setType(null)}>X</button>
-          {type == "weather" && <Weather />}
-          {type == "clock" && <Clock />}
-          {type == "crypto" && <Crypto />}
-          {type == "movies" && <Movies />}
-          {type == "spotify" && <Spotify />}
+          {type == "weather" && (
+            <Weather
+              toggleModal={props.toggleModal}
+              resetServiceType={setType}
+            />
+          )}
+          {type == "clock" && (
+            <Clock toggleModal={props.toggleModal} resetServiceType={setType} />
+          )}
+          {type == "crypto" && (
+            <Crypto
+              toggleModal={props.toggleModal}
+              resetServiceType={setType}
+            />
+          )}
+          {type == "movies" && (
+            <Movies
+              toggleModal={props.toggleModal}
+              resetServiceType={setType}
+            />
+          )}
+          {type == "spotify" && (
+            <Spotify
+              toggleModal={props.toggleModal}
+              resetServiceType={setType}
+            />
+          )}
         </div>
       )}
     </Modal>
