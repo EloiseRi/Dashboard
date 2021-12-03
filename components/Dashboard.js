@@ -6,8 +6,6 @@ import Movies from "./widgets/Movies";
 import Spotify from "./widgets/Spotify";
 
 const Dashboard = ({ widgets, refreshData }) => {
-  const [update, setUpdate] = useState(false);
-
   const deleteWidget = async (widgetId) => {
     await fetch("api/widgets/delete", {
       method: "POST",
@@ -16,10 +14,10 @@ const Dashboard = ({ widgets, refreshData }) => {
         _id: widgetId,
       }),
     });
-    setUpdate(!update);
+    refreshData();
   };
 
-  useEffect(() => {}, [update]);
+  useEffect(() => {}, []);
 
   return (
     <div className="my-20 text-center">
