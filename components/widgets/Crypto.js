@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 const KRAKEN_DATA_LABELS = Object.freeze({
   a: "Ask",
@@ -85,7 +86,8 @@ const Crypto = (props) => {
       <div>
         <div className="flex flex-col justify-center py-12">
           <div className="relative max-w-xl mx-auto">
-            <div className="relative bg-white shadow-lg rounded-3xl py-6 px-4 bg-clip-padding bg-opacity-60 border border-gray-100">
+            <div className="relative bg-white shadow-lg rounded-3xl pb-8 py-6 px-4 bg-clip-padding bg-opacity-60 border border-gray-100">
+              <button className="absolute bottom-1 text-black hover:text-red-600"><FontAwesomeIcon className="h-3" icon={faTrashAlt}></FontAwesomeIcon></button>
               <h2 className="text-purple-800 text-xl mb-2">Search Crypto Currency Data</h2>
               <div className="relative pt-2">
                 <input className="h-8 w-60 pl-2 rounded-lg z-0 focus:shadow border-purple-100 focus:outline-none"
@@ -101,8 +103,8 @@ const Crypto = (props) => {
                   <div className="w-56 mx-auto border border-gray-500 rounded-xl bg-gray-200 divide-y divide-gray-400 mt-6">
                     {Object.keys(data).map((dataKey, i) => (
                       <div className="" key={`${dataKey}-${i}`}>
-                          <p className="text-purple-500"
-                          >{KRAKEN_DATA_LABELS[dataKey]}</p>
+                        <p className="text-purple-500"
+                        >{KRAKEN_DATA_LABELS[dataKey]}</p>
                         <h3 className="text-gray-500">
                           {Array.isArray(data[dataKey])
                             ? data[dataKey][0]

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import moment from 'moment';
 import { faSync } from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 // import '/node_modules/react-grid-layout/css/styles.css';
@@ -87,87 +88,90 @@ const Weather = (props) => {
     }
   }, [update]);
 
-  
+
   return (
-    <div className="container mx-auto">
-        <div key="a">
-          {currentParams.type == "daily" && (
-            <div className="flex flex-col justify-center py-12">
-              <div className="relative max-w-xl mx-auto">
-                <div className="relative bg-white shadow-lg rounded-3xl p-4 bg-clip-padding bg-opacity-60 border border-gray-100">
-                  <div className="text-2xl text-purple-800">{displayDataD.date}</div>
-                  <img className="ml-auto h-28" src={`http://openweathermap.org/img/w/${displayDataD.icon}.png`} />
-                  <div className="text-4xl mt-2 mb-5">{Math.round(displayDataD.temp)}&deg;C</div>
-                  <div className="text-2xl">{displayDataD.city}</div>
-                  <div className="m-0 italic">{displayDataD.weather}</div>
-                  <div className="ml-auto flex flex-row text-xs">
-                    <svg className="h-3.5" viewBox="0 0 64 64"
-                      fill="none"
-                      stroke="#202020"
-                      stroke-miterlimit="10"
-                      stroke-width="2">
-                      <path d="M51.9 40.1a20.6 20.6 0 0 0-1-4.9C46.9 20.8 32 2 32 2S17.1 20.8 13 35.2a20.6 20.6 0 0 0-1 4.9c0 .5-.1 1-.1 1.5A20.2 20.2 0 0 0 32 62a20.2 20.2 0 0 0 20-20.4c0-.5 0-1-.1-1.5z" />
-                      <path data-name="layer1" fill="none" stroke="#202020" stroke-miterlimit="10"
-                        stroke-width="2" d="M38 30L26 50" />
-                      <circle data-name="layer1" cx="26" cy="32" r="4" fill="none" stroke="#202020"
-                        stroke-miterlimit="10" stroke-width="2" />
-                      <circle data-name="layer1" cx="38" cy="48" r="4" fill="none"
-                        stroke="#202020" stroke-miterlimit="10" stroke-width="2" />
-                    </svg>
-                    <div>{displayDataD.humidity}%</div></div>
-                  <div className="relative pt-2">
-                    <input type="text" className="h-6 w-52 pl-2 rounded-lg z-0 focus:shadow border-purple-100 focus:outline-none" placeholder={city} onChange={handleChange} />
-                    <div className="absolute top-2 right-0"> <button className="text-black h-6 rounded-md pl-2 pr-2 bg-opacity-50 hover:text-purple-500" onClick={handleSubmit}><FontAwesomeIcon className="h-3" icon={faSync}></FontAwesomeIcon></button> </div>
-                  </div>
+    <div className="container mx-auto ">
+      <div>
+        {currentParams.type == "daily" && (
+          <div className="flex flex-col justify-center py-12">
+            <div className="relative max-w-xl mx-auto">
+              <div className="relative bg-white shadow-lg rounded-3xl p-4 bg-clip-padding bg-opacity-60 border border-gray-100">
+                <button className="absolute left-4 top-2 text-black hover:text-red-600" onClick={handleSubmit}><FontAwesomeIcon className="h-3" icon={faTrashAlt}></FontAwesomeIcon></button>
+                <div className="text-2xl text-purple-800">{displayDataD.date}</div>
+                <img className="ml-auto h-28" src={`http://openweathermap.org/img/w/${displayDataD.icon}.png`} />
+                <div className="text-4xl mt-2 mb-5">{Math.round(displayDataD.temp)}&deg;C</div>
+                <div className="text-2xl">{displayDataD.city}</div>
+                <div className="m-0 italic">{displayDataD.weather}</div>
+                <div className="ml-auto flex flex-row text-xs">
+                  <svg className="h-3.5" viewBox="0 0 64 64"
+                    fill="none"
+                    stroke="#202020"
+                    stroke-miterlimit="10"
+                    stroke-width="2">
+                    <path d="M51.9 40.1a20.6 20.6 0 0 0-1-4.9C46.9 20.8 32 2 32 2S17.1 20.8 13 35.2a20.6 20.6 0 0 0-1 4.9c0 .5-.1 1-.1 1.5A20.2 20.2 0 0 0 32 62a20.2 20.2 0 0 0 20-20.4c0-.5 0-1-.1-1.5z" />
+                    <path data-name="layer1" fill="none" stroke="#202020" stroke-miterlimit="10"
+                      stroke-width="2" d="M38 30L26 50" />
+                    <circle data-name="layer1" cx="26" cy="32" r="4" fill="none" stroke="#202020"
+                      stroke-miterlimit="10" stroke-width="2" />
+                    <circle data-name="layer1" cx="38" cy="48" r="4" fill="none"
+                      stroke="#202020" stroke-miterlimit="10" stroke-width="2" />
+                  </svg>
+                  <div>{displayDataD.humidity}%</div></div>
+                <div className="relative pt-2">
+                  <input type="text" className="h-6 w-52 pl-2 rounded-lg z-0 focus:shadow border-purple-100 focus:outline-none" placeholder={city} onChange={handleChange} />
+                  <div className="absolute top-2 right-0"> <button className="text-black h-6 rounded-md pl-2 pr-2 bg-opacity-50 hover:text-purple-500" onClick={handleSubmit}><FontAwesomeIcon className="h-3" icon={faSync}></FontAwesomeIcon></button> </div>
                 </div>
               </div>
             </div>
-          )}
-        </div>
-        <div key="b">
-          {currentParams.type == "weekly" && (
-            <div className="py-12">
-              <div className="relative max-w-xl mx-auto">
-                <div className="relative flex flex-col relative bg-white shadow-lg rounded-3xl p-4 bg-clip-padding bg-opacity-60 border border-gray-100">
-                  <div className="text-2xl mb-2">{displayDataW.city}</div>
-                  <div className="m-0 italic text-ms mb-4">{displayDataW.weather}</div>
-                  <img className="absolute mx-auto right-6 top-0 h-24" src={`http://openweathermap.org/img/w/${displayDataW.iconDay1}.png`} />
-                  <div className="flex flex-row mx-auto">
-                    <div className="ml-6 flex-col mr-4">
-                      <div className="text-purple-800">{moment(displayDataW.dateDay1).format("DD/MM/YYYY")}</div>
-                      <div>{Math.round(displayDataW.tempDay1)}&deg;C</div>
-                      <img className="mx-auto" src={`http://openweathermap.org/img/w/${displayDataW.iconDay1}.png`} />
-                    </div>
-                    <div className="flex-col mr-4">
-                      <div className="text-purple-800">{moment(displayDataW.dateDay2).format("DD/MM/YYYY")}</div>
-                      <div>{Math.round(displayDataW.tempDay2)}&deg;C</div>
-                      <img className="mx-auto" src={`http://openweathermap.org/img/w/${displayDataW.iconDay2}.png`} />
-                    </div>
-                    <div className="flex-col mr-4">
-                      <div className="text-purple-800">{moment(displayDataW.dateDay3).format("DD/MM/YYYY")}</div>
-                      <div>{Math.round(displayDataW.tempDay3)}&deg;C</div>
-                      <img className="mx-auto" src={`http://openweathermap.org/img/w/${displayDataW.iconDay3}.png`} />
-                    </div>
-                    <div className="flex-col mr-4">
-                      <div className="text-purple-800">{moment(displayDataW.dateDay4).format("DD/MM/YYYY")}</div>
-                      <div>{Math.round(displayDataW.tempDay4)}&deg;C</div>
-                      <img className="mx-auto" src={`http://openweathermap.org/img/w/${displayDataW.iconDay4}.png`} />
-                    </div>
-                    <div className="flex-col mr-4">
-                      <div className="text-purple-800">{moment(displayDataW.dateDay5).format("DD/MM/YYYY")}</div>
-                      <div>{Math.round(displayDataW.tempDay5)}&deg;C</div>
-                      <img className="mx-auto" src={`http://openweathermap.org/img/w/${displayDataW.iconDay5}.png`} />
-                    </div>
+          </div>
+        )}
+      </div>
+      <div key="b">
+        {currentParams.type == "weekly" && (
+          <div className="py-12">
+            <div className="relative max-w-xl mx-auto">
+              <div className="relative flex flex-col relative bg-white shadow-lg rounded-3xl p-4 bg-clip-padding bg-opacity-60 border border-gray-100">
+               
+                <div className="text-2xl mb-2">{displayDataW.city}</div>
+                <div className="m-0 italic text-ms mb-4">{displayDataW.weather}</div>
+                <img className="absolute mx-auto right-6 top-0 h-24" src={`http://openweathermap.org/img/w/${displayDataW.iconDay1}.png`} />
+                <div className="flex flex-row mx-auto">
+                  <div className="ml-6 flex-col mr-4">
+                    <div className="text-purple-800">{moment(displayDataW.dateDay1).format("DD/MM/YYYY")}</div>
+                    <div>{Math.round(displayDataW.tempDay1)}&deg;C</div>
+                    <img className="mx-auto" src={`http://openweathermap.org/img/w/${displayDataW.iconDay1}.png`} />
                   </div>
-                  <div class="relative pt-2 w-52 mx-auto">
-                    <input type="text" className="h-6 w-52 pl-2 rounded-lg z-0 focus:shadow border-purple-100 focus:outline-none" placeholder={city} onChange={handleChange} />
-                    <div class="absolute top-2 right-0"> <button className="text-black h-6 rounded-md pl-2 pr-2 bg-opacity-50 hover:text-purple-500" onClick={handleSubmit}><FontAwesomeIcon className="h-3" icon={faSync}></FontAwesomeIcon></button> </div>
+                  <div className="flex-col mr-4">
+                    <div className="text-purple-800">{moment(displayDataW.dateDay2).format("DD/MM/YYYY")}</div>
+                    <div>{Math.round(displayDataW.tempDay2)}&deg;C</div>
+                    <img className="mx-auto" src={`http://openweathermap.org/img/w/${displayDataW.iconDay2}.png`} />
                   </div>
+                  <div className="flex-col mr-4">
+                    <div className="text-purple-800">{moment(displayDataW.dateDay3).format("DD/MM/YYYY")}</div>
+                    <div>{Math.round(displayDataW.tempDay3)}&deg;C</div>
+                    <img className="mx-auto" src={`http://openweathermap.org/img/w/${displayDataW.iconDay3}.png`} />
+                  </div>
+                  <div className="flex-col mr-4">
+                    <div className="text-purple-800">{moment(displayDataW.dateDay4).format("DD/MM/YYYY")}</div>
+                    <div>{Math.round(displayDataW.tempDay4)}&deg;C</div>
+                    <img className="mx-auto" src={`http://openweathermap.org/img/w/${displayDataW.iconDay4}.png`} />
+                  </div>
+                  <div className="flex-col mr-4">
+                    <div className="text-purple-800">{moment(displayDataW.dateDay5).format("DD/MM/YYYY")}</div>
+                    <div>{Math.round(displayDataW.tempDay5)}&deg;C</div>
+                    <img className="mx-auto" src={`http://openweathermap.org/img/w/${displayDataW.iconDay5}.png`} />
+                  </div>
+                </div>
+            <button className="absolute top-2 left-4 text-black hover:text-red-600" onClick={handleSubmit}><FontAwesomeIcon className="h-3" icon={faTrashAlt}></FontAwesomeIcon></button>
+                <div class="relative pt-2 w-52 mx-auto">
+                  <input type="text" className="h-6 w-52 pl-2 rounded-lg z-0 focus:shadow border-purple-100 focus:outline-none" placeholder={city} onChange={handleChange} />
+                  <div class="absolute top-2 right-0"> <button className="text-black h-6 rounded-md pl-2 pr-2 bg-opacity-50 hover:text-purple-500" onClick={handleSubmit}><FontAwesomeIcon className="h-3" icon={faSync}></FontAwesomeIcon></button> </div>
                 </div>
               </div>
             </div>
-          )}
-        </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
