@@ -12,15 +12,21 @@ const WClock = (props) => {
   const [value, setValue] = useState(new Date());
   let currentParams = props.params.params;
 
+
+  const handleClick = async (e) => {
+    props.deleteWidget(widgetId);
+  };
+
   useEffect((continent, country) => {
     const fetchTimezone = async (continent, country) => {
       let timezone = continent + "/" + country;
+      
       let response = await fetch(
         `http://worldtimeapi.org/api/timezone/${timezone}`
       );
       let data = await response.json();
       setData(data);
-      console.log(data)
+      // console.log(data)
     };
     fetchTimezone(currentParams.continent, currentParams.country);
     const interval = setInterval(
@@ -37,7 +43,7 @@ const WClock = (props) => {
       <div className="flex flex-col justify-center py-12">
         <div className="relative max-w-xl mx-auto">
           <div className="relative bg-white shadow-lg rounded-3xl p-8 bg-clip-padding bg-opacity-60 border border-gray-100">
-            <button className="absolute left-4 top-2 text-black hover:text-red-600"><FontAwesomeIcon className="h-3" icon={faTrashAlt}></FontAwesomeIcon></button>
+            <button className="absolute left-4 top-2 text-black hover:text-red-600" onClick={handleClick}><FontAwesomeIcon className="h-3" icon={faTrashAlt}></FontAwesomeIcon></button>
             <div className="mb-4"> {moment.tz(data.timezone).format('LTS')}</div>
             <Clock value={moment.tz(data.timezone).format('LTS')} />
             <div className="mt-4">{data.timezone}</div>

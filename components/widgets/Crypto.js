@@ -77,7 +77,9 @@ const Crypto = (props) => {
     setUpdate(!update);
   };
   const handleChange = async (e) => setSymbol(e.target.value);
-
+  const handleClick = async (e) => {
+    props.deleteWidget(widgetId);
+  };
   useEffect(() => {
     find();
     const interval = setInterval(() => setValue(new Date()), 10000);
@@ -92,7 +94,7 @@ const Crypto = (props) => {
         <div className="flex flex-col justify-center py-12">
           <div className="relative max-w-xl mx-auto">
             <div className="relative bg-white shadow-lg rounded-3xl pb-8 py-6 px-4 bg-clip-padding bg-opacity-60 border border-gray-100">
-              <button className="absolute bottom-1 text-black hover:text-red-600"><FontAwesomeIcon className="h-3" icon={faTrashAlt}></FontAwesomeIcon></button>
+              <button className="absolute bottom-1 text-black hover:text-red-600" onClick={handleClick}><FontAwesomeIcon className="h-3" icon={faTrashAlt}></FontAwesomeIcon></button>
               <h2 className="text-purple-800 text-xl mb-2">Search Crypto Currency Data</h2>
               <div className="relative pt-2">
                 <input className="h-8 w-60 pl-2 rounded-lg z-0 focus:shadow border-purple-100 focus:outline-none"

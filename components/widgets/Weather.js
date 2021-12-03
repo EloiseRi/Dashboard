@@ -71,6 +71,10 @@ const Weather = (props) => {
     setUpdate(!update);
   };
 
+  const handleClick = async (e) => {
+    props.deleteWidget(widgetId);
+  };
+
   useEffect(() => {
     // fetchWeather(currentParams.type, currentParams.city);
     if (currentParams.type == 'daily' && data != null) {
@@ -100,7 +104,7 @@ const Weather = (props) => {
           <div className="flex flex-col justify-center py-12">
             <div className="relative max-w-xl mx-auto">
               <div className="relative bg-white shadow-lg rounded-3xl p-4 bg-clip-padding bg-opacity-60 border border-gray-100">
-                <button className="absolute left-4 top-2 text-black hover:text-red-600" onClick={handleSubmit}><FontAwesomeIcon className="h-3" icon={faTrashAlt}></FontAwesomeIcon></button>
+                <button className="absolute left-4 top-2 text-black hover:text-red-600" onClick={handleClick}><FontAwesomeIcon className="h-3" icon={faTrashAlt}></FontAwesomeIcon></button>
                 <div className="text-2xl text-purple-800">{displayDataD.date}</div>
                 <img className="ml-auto h-28" src={`http://openweathermap.org/img/w/${displayDataD.icon}.png`} />
                 <div className="text-4xl mt-2 mb-5">{Math.round(displayDataD.temp)}&deg;C</div>
@@ -135,7 +139,7 @@ const Weather = (props) => {
           <div className="py-12">
             <div className="relative max-w-xl mx-auto">
               <div className="relative flex flex-col relative bg-white shadow-lg rounded-3xl p-4 bg-clip-padding bg-opacity-60 border border-gray-100">
-               
+
                 <div className="text-2xl mb-2">{displayDataW.city}</div>
                 <div className="m-0 italic text-ms mb-4">{displayDataW.weather}</div>
                 <img className="absolute mx-auto right-6 top-0 h-24" src={`http://openweathermap.org/img/w/${displayDataW.iconDay1}.png`} />
@@ -166,7 +170,7 @@ const Weather = (props) => {
                     <img className="mx-auto" src={`http://openweathermap.org/img/w/${displayDataW.iconDay5}.png`} />
                   </div>
                 </div>
-            <button className="absolute top-2 left-4 text-black hover:text-red-600" onClick={handleSubmit}><FontAwesomeIcon className="h-3" icon={faTrashAlt}></FontAwesomeIcon></button>
+                <button className="absolute top-2 left-4 text-black hover:text-red-600" onClick={handleClick}><FontAwesomeIcon className="h-3" icon={faTrashAlt}></FontAwesomeIcon></button>
                 <div class="relative pt-2 w-52 mx-auto">
                   <input type="text" className="h-6 w-52 pl-2 rounded-lg z-0 focus:shadow border-purple-100 focus:outline-none" placeholder={city} onChange={handleChange} />
                   <div class="absolute top-2 right-0"> <button className="text-black h-6 rounded-md pl-2 pr-2 bg-opacity-50 hover:text-purple-500" onClick={handleSubmit}><FontAwesomeIcon className="h-3" icon={faSync}></FontAwesomeIcon></button> </div>
