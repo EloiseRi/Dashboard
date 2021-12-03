@@ -1,8 +1,16 @@
 import { useEffect, useState } from "react";
+import Clock from "react-clock";
+import "react-clock/dist/Clock.css";
+import moment from "moment-timezone";
 
-const Clock = (props) => {
-  const [data, setData] = useState({});
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+const WClock = (props) => {
+  const [data, setData] = useState([]);
+  const [value, setValue] = useState(new Date());
   let currentParams = props.params.params;
+  let widgetId = props.params._id;
 
   useEffect((continent, country) => {
     const fetchTimezone = async (continent, country) => {
@@ -14,13 +22,39 @@ const Clock = (props) => {
       setData(data);
     };
     fetchTimezone(currentParams.continent, currentParams.country);
+    const interval = setInterval(() => setValue(new Date()), 1000);
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
+
+  const handleClick = async (e) => {
+    props.deleteWidget(widgetId);
+  };
 
   return (
     <div>
-      <h1>Clock</h1>
+      <div className="flex flex-col justify-center py-12">
+        <div className="relative max-w-xl mx-auto">
+          <div className="relative bg-white shadow-lg rounded-3xl p-8 bg-clip-padding bg-opacity-60 border border-gray-100">
+            <button className="absolute left-4 top-2 text-black hover:text-red-600">
+              <FontAwesomeIcon
+                className="h-3"
+                icon={faTrashAlt}
+                onClick={handleClick}
+              ></FontAwesomeIcon>
+            </button>
+            <div className="mb-4">
+              {" "}
+              {moment.tz(data.timezone).format("LTS")}
+            </div>
+            <Clock value={moment.tz(data.timezone).format("LTS")} />
+            <div className="mt-4">{data.timezone}</div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default Clock;
+export default WClock;

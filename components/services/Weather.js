@@ -19,9 +19,9 @@ const Weather = (props) => {
 
   const handleClick = (widgetType) => {
     addWidget(city, widgetType);
+    props.refreshData();
     props.toggleModal();
     props.resetServiceType(null);
-    props.refreshData();
   }
 
   return (
