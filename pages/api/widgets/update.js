@@ -28,6 +28,15 @@ export default async function handler(req, res) {
         );
         res.status(200).json(response);
         break;
+      case "CLOCK":
+        response = await db.collection("widgets").updateOne(
+          { _id: _idObj },
+          {
+            $set: { "params.country": req.body.country, "params.continent": req.body.continent },
+          }
+        );
+        res.status(200).json(response);
+        break;
       case "MOVIES":
         response = await db.collection("widgets").updateOne(
           { _id: _idObj },
