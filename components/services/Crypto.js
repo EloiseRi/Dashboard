@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 const Crypto = (props) => {
   const [pair, setPair] = useState("ETHUSD");
+  const [refreshRate, setRefreshRate] = useState(10000)
 
   const addWidget = async (pair) => {
     await fetch("/api/widgets/add", {
@@ -10,7 +11,7 @@ const Crypto = (props) => {
       body: JSON.stringify({
         api_name: "crypto",
         auth_required: false,
-        params: { pair: pair },
+        params: { pair: pair, refreshRate: refreshRate },
       }),
     });
   };
@@ -32,6 +33,12 @@ const Crypto = (props) => {
         type="text"
         placeholder="ETHUSD"
         onChange={(e) => setPair(e.target.value)}
+      />
+      <label>Refresh Rate (ms) :</label>
+      <input
+        type="text"
+        placeholder="10000"
+        onChange={(e) => setRefreshRate(e.target.value)}
       />
       <button onClick={handleClick}>
         Create Widget
