@@ -128,7 +128,7 @@ const Movies = (props) => {
                   showDots={false}
                   responsive={responsive}
                   arrows={true}
-                  ssr={false} // means to render carousel on server-side.
+                  ssr={true} // means to render carousel on server-side.
                   infinite={true}
                   autoPlay={true}
                   autoPlaySpeed={5000}
@@ -174,7 +174,7 @@ const Movies = (props) => {
                   showDots={false}
                   responsive={responsive}
                   arrows={true}
-                  ssr={false} // means to render carousel on server-side.
+                  ssr={true} // means to render carousel on server-side.
                   infinite={true}
                   autoPlay={true}
                   autoPlaySpeed={5000}
@@ -220,7 +220,7 @@ const Movies = (props) => {
                   showDots={false}
                   responsive={responsive}
                   arrows={true}
-                  ssr={false} // means to render carousel on server-side.
+                  ssr={true} // means to render carousel on server-side.
                   infinite={true}
                   autoPlay={true}
                   autoPlaySpeed={5000}
