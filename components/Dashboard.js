@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { DragDropContext } from 'react-beautiful-dnd';
 import Weather from "./widgets/Weather";
 import Clock from "./widgets/Clock";
 import Crypto from "./widgets/Crypto";
