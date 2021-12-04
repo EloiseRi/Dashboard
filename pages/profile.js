@@ -3,7 +3,6 @@ import { useUser } from "@auth0/nextjs-auth0";
 const Profile = () => {
   const { user } = useUser();
 
-  console.log(user)
   return (
     <div className='my-20 text-center'>
       <h1>{user.name}</h1>
