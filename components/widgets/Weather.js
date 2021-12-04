@@ -80,7 +80,7 @@ const Weather = (props) => {
           <div className="relative max-w-xl mx-auto">
             <div className="relative bg-white shadow-lg rounded-3xl p-4 bg-clip-padding bg-opacity-60 border border-gray-100">
               <button
-                className="absolute left-4 top-2 text-black hover:text-red-600"
+                className="absolute right-3 top-2 text-black hover:text-red-600"
                 onClick={handleSubmit}
               >
                 <FontAwesomeIcon
@@ -93,7 +93,7 @@ const Weather = (props) => {
                 {moment().format("dddd")}
               </div>
               <img
-                className="ml-auto h-28"
+                className="mx-auto h-28"
                 src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`}
               />
               <div className="text-4xl mt-2 mb-5">
