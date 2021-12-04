@@ -17,11 +17,13 @@ const useFindMovies = (props) => {
     setType,
     data,
     findMovies: async () => {
+      let res = null;
+      let result = null;
       try {
-        const res = await fetch(
+        res = await fetch(
           `https://api.themoviedb.org/3/movie/${type}?api_key=${process.env.moviesKey}&language=en-US&page=1`
         );
-        let result = await res.json();
+        result = await res.json();
         setData(result);
         return;
       } catch (e) {
