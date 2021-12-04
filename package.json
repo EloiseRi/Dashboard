@@ -11,13 +11,18 @@
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.6.1",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
     "@headlessui/react": "^1.4.2",
+    "moment-timezone": "^0.5.34",
     "mongodb": "^4.2.0",
     "next": "12.0.4",
     "react": "17.0.2",
     "react-beautiful-dnd": "^13.1.0",
+    "react-clock": "^3.0.0",
     "react-dom": "17.0.2",
-    "react-modal": "^3.14.4"
+    "react-modal": "^3.14.4",
+    "react-multi-carousel": "^2.6.5"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",
