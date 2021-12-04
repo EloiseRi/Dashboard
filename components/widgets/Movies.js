@@ -214,25 +214,25 @@ const Movies = (props) => {
                   itemClass="carousel-item-padding-10-px"
                 >
                   <div>
-                    <p className="text-sm mb-4">Popular Movies</p>
+                    <p className="text-sm mb-3">Popular Movies</p>
                     <p className="italic mb-1">{data.results[0].title}</p>
                     <img className="h-32 mx-auto" src={`https://image.tmdb.org/t/p/original/${data.results[0].poster_path}`} />
                     <p className="mt-4">{data.results[0].vote_average}/10</p>
                   </div>
                   <div>
-                    <p className="text-sm mb-4">Popular Movies</p>
+                    <p className="text-sm mb-3">Popular Movies</p>
                     <p className="italic mb-2">{data.results[2].title}</p>
                     <img className="h-32 mx-auto" src={`https://image.tmdb.org/t/p/original/${data.results[2].poster_path}`} />
                     <p className="mt-4">{data.results[2].vote_average}/10</p>
                   </div>
                   <div>
-                    <p className="text-sm mb-4">Popular Movies</p>
+                    <p className="text-sm mb-3">Popular Movies</p>
                     <p className="italic mb-2">{data.results[6].title}</p>
                     <img className="h-32 mx-auto" src={`https://image.tmdb.org/t/p/original/${data.results[6].poster_path}`} />
                     <p className="mt-4">{data.results[6].vote_average}/10</p>
                   </div>
                   <div>
-                    <p className="text-sm mb-4">Popular Movies</p>
+                    <p className="text-sm mb-3">Popular Movies</p>
                     <p className="italic mb-2">{data.results[9].title}</p>
                     <img className="h-32 mx-auto" src={`https://image.tmdb.org/t/p/original/${data.results[9].poster_path}`} />
                     <p className="mt-4">{data.results[9].vote_average}/10</p>
@@ -260,25 +260,25 @@ const Movies = (props) => {
                   itemClass="carousel-item-padding-10-px"
                 >
                   <div>
-                    <p className="text-sm mb-4">Top Rated Movies</p>
+                    <p className="text-sm mb-3">Top Rated Movies</p>
                     <p className="italic mb-1">{data.results[0].title}</p>
                     <img className="h-32 mx-auto" src={`https://image.tmdb.org/t/p/original/${data.results[0].poster_path}`} />
                     <p className="mt-4">{data.results[0].vote_average}/10</p>
                   </div>
                   <div>
-                    <p className="text-sm mb-4">Top Rated Movies</p>
+                    <p className="text-sm mb-3">Top Rated Movies</p>
                     <p className="italic mb-2">{data.results[2].title}</p>
                     <img className="h-32 mx-auto" src={`https://image.tmdb.org/t/p/original/${data.results[2].poster_path}`} />
                     <p className="mt-4">{data.results[2].vote_average}/10</p>
                   </div>
                   <div>
-                    <p className="text-sm mb-4">Top Rated Movies</p>
+                    <p className="text-sm mb-3">Top Rated Movies</p>
                     <p className="italic mb-2">{data.results[6].title}</p>
                     <img className="h-32 mx-auto" src={`https://image.tmdb.org/t/p/original/${data.results[6].poster_path}`} />
                     <p className="mt-4">{data.results[6].vote_average}/10</p>
                   </div>
                   <div>
-                    <p className="text-sm mb-4">Top Rated Movies</p>
+                    <p className="text-sm mb-3">Top Rated Movies</p>
                     <p className="italic mb-2">{data.results[9].title}</p>
                     <img className="h-32 mx-auto" src={`https://image.tmdb.org/t/p/original/${data.results[9].poster_path}`} />
                     <p className="mt-4">{data.results[9].vote_average}/10</p>
@@ -306,25 +306,25 @@ const Movies = (props) => {
                   itemClass="carousel-item-padding-10-px"
                 >
                   <div>
-                    <p className="text-sm mb-4">Upcoming Movies</p>
+                    <p className="text-sm mb-3">Upcoming Movies</p>
                     <p className="italic mb-1">{data.results[0].title}</p>
                     <img className="h-32 mx-auto" src={`https://image.tmdb.org/t/p/original/${data.results[0].poster_path}`} />
                     <p className="mt-4">{data.results[0].vote_average}/10</p>
                   </div>
                   <div>
-                    <p className="text-sm mb-4">Upcoming Movies</p>
+                    <p className="text-sm mb-3">Upcoming Movies</p>
                     <p className="italic mb-2">{data.results[2].title}</p>
                     <img className="h-32 mx-auto" src={`https://image.tmdb.org/t/p/original/${data.results[2].poster_path}`} />
                     <p className="mt-4">{data.results[2].vote_average}/10</p>
                   </div>
                   <div>
-                    <p className="text-sm mb-4">Upcoming Movies</p>
+                    <p className="text-sm mb-3">Upcoming Movies</p>
                     <p className="italic mb-2">{data.results[6].title}</p>
                     <img className="h-32 mx-auto" src={`https://image.tmdb.org/t/p/original/${data.results[6].poster_path}`} />
                     <p className="mt-4">{data.results[6].vote_average}/10</p>
                   </div>
                   <div>
-                    <p className="text-sm mb-4">Upcoming Movies</p>
+                    <p className="text-sm mb-3">Upcoming Movies</p>
                     <p className="italic mb-2">{data.results[9].title}</p>
                     <img className="h-32 mx-auto" src={`https://image.tmdb.org/t/p/original/${data.results[9].poster_path}`} />
                     <p className="mt-4">{data.results[9].vote_average}/10</p>
