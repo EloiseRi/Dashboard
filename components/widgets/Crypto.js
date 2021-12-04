@@ -92,8 +92,6 @@ const Crypto = (props) => {
     };
   }, [update, value]);
 
-  console.log(data);
-
   return (
     <>
       <div>
@@ -138,7 +136,7 @@ const Crypto = (props) => {
                       {(data.a[0] * 100) / 100}
                     </div>
                     <div className="pt-1 text-sm">
-                      {(((data.c[0] - data.o[0]) / data.c[0]) * 100).toFixed(2)}{" "}
+                      {(((data.c[0] - data.o) / data.c[0]) * 100).toFixed(2)}{" "}
                       %
                     </div>
                     <div className="flex flex-row mx-auto py-4 place-content-center">
