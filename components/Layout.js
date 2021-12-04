@@ -11,7 +11,7 @@ const Layout = ({ children, refreshData }) => (
     </Head>
     <main id="app" className="flex flex-col h-screen justify-between">
       <NavBar refreshData={refreshData} />
-      <div className="flex-grow-1 mt-5">{children}</div>
+      <div className="bg-gray-400 flex-grow-1 mt-5">{children}</div>
       <Footer />
     </main>
   </>

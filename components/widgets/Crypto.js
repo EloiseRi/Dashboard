@@ -52,6 +52,7 @@ const useFindTicker = (pair) => {
       } catch (e) {
         console.error(e);
       }
+      
     },
   };
 };
@@ -63,6 +64,10 @@ const Crypto = (props) => {
   let refreshRate = props.params.params.refreshRate;
   let widgetId = props.params._id;
   const { find, symbol, setSymbol, data, error } = useFindTicker(defaultPair);
+  
+  let t = (defaultPair.split("EUR").length) -1;
+  
+  console.log(t)
 
   let t = defaultPair.split("EUR").length - 1;
 

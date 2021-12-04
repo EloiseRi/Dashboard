@@ -23,8 +23,8 @@ const Spotify = (props) => {
 
   return (
     <div className="text-center">
-      <h1 className="text-xl">Spotify</h1>
-      <button onClick={handleClick}>Create Widget</button>
+      <h1 className="mb-2 text-3xl text-black">Spotify</h1>
+      <button className="mx-auto my-8 bg-gray-400 p-3 rounded-2xl text-white hover:text-purple-300" onClick={handleClick}>Create Widget</button>
     </div>
   );
 };

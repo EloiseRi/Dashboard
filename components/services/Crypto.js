@@ -16,7 +16,7 @@ const Crypto = (props) => {
     });
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   const handleClick = () => {
     addWidget(pair)
@@ -27,22 +27,23 @@ const Crypto = (props) => {
 
   return (
     <div className="text-center">
-      <h1 className="text-xl">Crypto Market</h1>
+      <h1 className="mb-2 text-3xl text-black">Crypto Market</h1>
       <label>Default pair :</label>
-      <input
-        type="text"
-        placeholder="ETHUSD"
-        onChange={(e) => setPair(e.target.value)}
-      />
-      <label>Refresh Rate (ms) :</label>
-      <input
-        type="text"
-        placeholder="10000"
-        onChange={(e) => setRefreshRate(e.target.value)}
-      />
-      <button onClick={handleClick}>
-        Create Widget
-      </button>
+      <div className="flex flex-col ">
+        <input
+          className="mx-auto w-72 pl-2 mt-2 mb-6 py-2 rounded-xl"
+          type="text"
+          placeholder="ETHUSD"
+          onChange={(e) => setPair(e.target.value)}
+        />
+        <label>Refresh Rate (ms) :</label>
+        <input
+          type="text"
+          placeholder="10000"
+          onChange={(e) => setRefreshRate(e.target.value)}
+        />
+        <button className="mx-auto bg-gray-400 px-6 py-2 rounded-2xl text-white hover:text-purple-300" onClick={handleClick}>Create Widget</button>
+      </div>
     </div>
   );
 };

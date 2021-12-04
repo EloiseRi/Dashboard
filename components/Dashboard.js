@@ -18,12 +18,12 @@ const Dashboard = ({ widgets, refreshData }) => {
     refreshData();
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   return (
     <div className="my-20 text-center">
       <h1 className="mb-4">Octoboard Project</h1>
-      <div>
+      <div className="grid grid-cols-1 sm:grid-cols-3">
         {" "}
         {widgets.map((widget, index) => {
           if (widget.api_name == "weather")

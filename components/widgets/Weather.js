@@ -87,13 +87,49 @@ const Weather = (props) => {
 
   return (
     <div>
-      {(error && <h1>{error}</h1>) ||
-        (data && currentParams.type == "daily" && (
+      {currentParams.type == "daily" && error && <div className="flex flex-col justify-center py-12">
+        <div className="relative max-w-xl mx-auto">
+          <div className="relative bg-white shadow-lg rounded-3xl p-4 bg-clip-padding bg-opacity-60 border border-gray-100">
+            <h1 className="">{error}</h1>
+            <button
+              className="absolute left-3 top-2 text-black hover:text-red-600"
+              onClick={handleSubmit}
+            >
+              <FontAwesomeIcon
+                className="h-3"
+                icon={faTrashAlt}
+                onClick={handleClick}
+              ></FontAwesomeIcon>
+            </button>
+            <div className="relative pt-2">
+              <input
+                type="text"
+                className="h-6 w-52 pl-2 rounded-lg z-0 focus:shadow border-purple-100 focus:outline-none"
+                placeholder={city}
+                onChange={handleChange}
+              />
+              <div className="absolute top-2 right-0">
+                {" "}
+                <button
+                  className="text-black h-6 rounded-md pl-2 pr-2 bg-opacity-50 hover:text-purple-500"
+                  onClick={handleSubmit}
+                >
+                  <FontAwesomeIcon
+                    className="h-3"
+                    icon={faSync}
+                  ></FontAwesomeIcon>
+                </button>{" "}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        || data && currentParams.type == "daily" && (
           <div className="flex flex-col justify-center py-12">
             <div className="relative max-w-xl mx-auto">
               <div className="relative bg-white shadow-lg rounded-3xl p-4 bg-clip-padding bg-opacity-60 border border-gray-100">
                 <button
-                  className="absolute left-4 top-2 text-black hover:text-red-600"
+                  className="absolute right-3 top-2 text-black hover:text-red-600"
                   onClick={handleSubmit}
                 >
                   <FontAwesomeIcon
@@ -106,13 +142,13 @@ const Weather = (props) => {
                   {moment().format("dddd")}
                 </div>
                 <img
-                  className="ml-auto h-28"
+                  className="mx-auto h-28"
                   src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`}
                 />
                 <div className="text-4xl mt-2 mb-5">
                   {Math.round(data.main.temp)}&deg;C
                 </div>
-                <div className="text-2xl">{data.name}</div>
+                <div className="sm:text-lg xl:text-2xl">{data.name}</div>
                 <div className="m-0 italic">{data.weather[0].main}</div>
                 <div className="ml-auto flex flex-row text-xs">
                   <svg
@@ -178,22 +214,56 @@ const Weather = (props) => {
               </div>
             </div>
           </div>
-        ))}
+        )}
       <div>
-        {(error && <h1>{error}</h1>) ||
-          (data && currentParams.type == "weekly" && (
+        {currentParams.type == "weekly" && error && <div className="relative max-w-xl mx-auto">
+          <div className="relative bg-white shadow-lg rounded-3xl p-4 bg-clip-padding bg-opacity-60 border border-gray-100">
+            <h1 className="">{error}</h1>
+            <button
+              className="absolute left-3 top-2 text-black hover:text-red-600"
+              onClick={handleSubmit}
+            >
+              <FontAwesomeIcon
+                className="h-3"
+                icon={faTrashAlt}
+                onClick={handleClick}
+              ></FontAwesomeIcon>
+            </button>
+            <div className="relative pt-2">
+              <input
+                type="text"
+                className="h-6 w-52 pl-2 rounded-lg z-0 focus:shadow border-purple-100 focus:outline-none"
+                placeholder={city}
+                onChange={handleChange}
+              />
+              <div className="absolute top-2 right-0">
+                {" "}
+                <button
+                  className="text-black h-6 rounded-md pl-2 pr-2 bg-opacity-50 hover:text-purple-500"
+                  onClick={handleSubmit}
+                >
+                  <FontAwesomeIcon
+                    className="h-3"
+                    icon={faSync}
+                  ></FontAwesomeIcon>
+                </button>{" "}
+              </div>
+            </div>
+          </div>
+        </div>
+          || data && currentParams.type == "weekly" && (
             <div className="py-12">
               <div className="relative max-w-xl mx-auto">
                 <div className="flex flex-col relative bg-white shadow-lg rounded-3xl p-4 bg-clip-padding bg-opacity-60 border border-gray-100">
-                  <div className="text-2xl mb-2">{data.city.name}</div>
+                  <div className="md:text-2xl mb-2 sm:text-xl">{data.city.name}</div>
                   <div className="m-0 italic text-ms mb-4">
                     {data.list[1].weather[0].main}
                   </div>
                   <img
-                    className="absolute mx-auto right-6 top-0 h-24"
+                    className="sm:hidden xl:block absolute mx-auto right-6 top-0 h-24"
                     src={`http://openweathermap.org/img/w/${data.list[3].weather[0].icon}.png`}
                   />
-                  <div className="flex flex-row mx-auto">
+                  <div className="md:flex md:flex-row sm:flex-wrap sm:place-content-center mx-auto">
                     <div className="ml-6 flex-col mr-4">
                       <div className="text-purple-800">
                         {moment(data.list[3].dt_txt).format("DD/MM/YYYY")}
@@ -278,7 +348,7 @@ const Weather = (props) => {
                 </div>
               </div>
             </div>
-          ))}
+          )}
       </div>
     </div>
   );

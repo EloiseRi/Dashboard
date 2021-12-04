@@ -13,7 +13,7 @@ const Movies = (props) => {
     });
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   const handleClick = (type) => {
     addWidget(type);
@@ -24,13 +24,13 @@ const Movies = (props) => {
 
   return (
     <div className="text-center">
-      <h1 className="text-xl">The Movie DB</h1>
+      <h1 className="mb-2 text-3xl text-black">The Movie DB</h1>
 
       <div className="mt-12 grid grid-cols-2 gap-4">
-        <button onClick={() => handleClick('popular')}>Popular Movies</button>
-        <button onClick={() => handleClick('top_rated')}>Top Rated Movies</button>
-        <button onClick={() => handleClick('now_playing')}>In Theaters Now</button>
-        <button onClick={() => handleClick('upcoming')}>Upcoming Movies</button>
+        <button className="mx-auto my-3 bg-gray-400 p-3 rounded-2xl text-white hover:text-purple-300" onClick={() => handleClick('popular')}>Popular Movies</button>
+        <button className="mx-auto my-3 bg-gray-400 p-3 rounded-2xl text-white hover:text-purple-300" onClick={() => handleClick('top_rated')}>Top Rated Movies</button>
+        <button className="mx-auto my-3 bg-gray-400 p-3 rounded-2xl text-white hover:text-purple-300" onClick={() => handleClick('now_playing')}>In Theaters Now</button>
+        <button className="mx-auto my-3 bg-gray-400 p-3 rounded-2xl text-white hover:text-purple-300" onClick={() => handleClick('upcoming')}>Upcoming Movies</button>
       </div>
     </div>
   );

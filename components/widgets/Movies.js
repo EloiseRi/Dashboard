@@ -33,6 +33,9 @@ const Movies = (props) => {
   const defaultType = props.params.params.type;
   let widgetId = props.params._id;
   const { findMovies, type, setType, data } = useFindMovies(defaultType);
+  console.log(type)
+  console.log(data)
+
 
   const handleChange = async (e) => {
     setType(e.target.value);
