@@ -24,17 +24,21 @@ const useFindWeather = (props) => {
           res = await fetch(
             `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.weatherKey}`
           );
-          if (!res.ok)
-            setError("Not found")
-          result = await res.json();
+          if (!res.ok) setError("Not found");
+          else {
+            setError(null);
+            result = await res.json();
+          }
         }
         if (type == "weekly") {
           res = await fetch(
             `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${process.env.weatherKey}`
           );
-          if (!res.ok)
-            setError("Not found")
-          result = await res.json();
+          if (!res.ok) setError("Not found");
+          else {
+            setError(null);
+            result = await res.json();
+          }
         }
       } catch (e) {
         console.error(e);
@@ -49,7 +53,8 @@ const Weather = (props) => {
   const [update, setUpdate] = useState(false);
   let currentParams = props.params.params;
   let widgetId = props.params._id;
-  const { fetchWeather, city, setCity, data, error, setError } = useFindWeather(currentParams);
+  const { fetchWeather, city, setCity, data, error, setError } =
+    useFindWeather(currentParams);
 
   const handleChange = async (e) => setCity(e.target.value);
   const handleSubmit = async () => {
@@ -65,7 +70,7 @@ const Weather = (props) => {
       });
       setUpdate(!update);
     } catch (e) {
-      console.error(e)
+      console.error(e);
     }
   };
 
