@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Weather from "./widgets/Weather";
 import Clock from "./widgets/Clock";
 import Crypto from "./widgets/Crypto";
@@ -55,7 +55,7 @@ const Dashboard = ({ widgets, refreshData }) => {
             );
         })}{" "}
       </div>
-      <button onClick={() => refreshData()} >Refresh</button>
+      <button onClick={() => refreshData()}>Refresh</button>
     </div>
   );
 };

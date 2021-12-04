@@ -2,17 +2,24 @@ import { Menu, Transition } from "@headlessui/react";
 import { useState, Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useUser } from "@auth0/nextjs-auth0";
 import AnchorLink from "./AnchorLink";
 import WidgetModal from "./Modal";
 import SideBar from "./SideBar";
 
 const NavBar = ({ refreshData }) => {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const { user, isLoading } = useUser();
   const toggle = () => setIsOpen(!isOpen);
   const toggleModal = () => setOpenModal(!openModal);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    router.push('/profile')
+  }
 
   return (
     <nav className="flex fixed w-full items-center justify-between px-6 h-20 bg-white text-gray-700 border-b border-gray-200 z-10">
@@ -87,6 +94,7 @@ const NavBar = ({ refreshData }) => {
                       <Menu.Item>
                         {({ active }) => (
                           <button
+                            onClick={handleClick}
                             className={`${
                               active
                                 ? "bg-violet-500 text-black"
