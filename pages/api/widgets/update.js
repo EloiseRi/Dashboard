@@ -14,7 +14,7 @@ export default async function handler(req, res) {
         response = await db.collection("widgets").updateOne(
           { _id: _idObj },
           {
-            $set: { params: { pair: req.body.pair } },
+            $set: { "params.pair": req.body.pair },
           }
         );
         res.status(200).json(response);
