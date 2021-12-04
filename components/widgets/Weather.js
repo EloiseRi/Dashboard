@@ -63,7 +63,6 @@ const Weather = (props) => {
           city: city,
         }),
       });
-      await fetchWeather();
       setUpdate(!update);
     } catch (e) {
       console.error(e)
