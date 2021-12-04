@@ -1,10 +1,8 @@
 import { useEffect } from "react";
-import { DragDropContext } from 'react-beautiful-dnd';
 import Weather from "./widgets/Weather";
 import Clock from "./widgets/Clock";
 import Crypto from "./widgets/Crypto";
 import Movies from "./widgets/Movies";
-import Spotify from "./widgets/Spotify";
 
 const Dashboard = ({ widgets, refreshData }) => {
   const deleteWidget = async (widgetId) => {
@@ -45,14 +43,6 @@ const Dashboard = ({ widgets, refreshData }) => {
           if (widget.api_name == "movies")
             return (
               <Movies key={index} params={widget} deleteWidget={deleteWidget} />
-            );
-          if (widget.api_name == "spotify")
-            return (
-              <Spotify
-                key={index}
-                params={widget}
-                deleteWidget={deleteWidget}
-              />
             );
         })}{" "}
       </div>
