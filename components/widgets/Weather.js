@@ -8,11 +8,14 @@ const useFindWeather = (props) => {
   const [city, setCity] = useState(props.city);
   const [type, setType] = useState(props.type);
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
 
   return {
     city,
     setCity,
     data,
+    error,
+    setError,
     fetchWeather: async () => {
       let res = null;
       let result = null;
@@ -21,16 +24,17 @@ const useFindWeather = (props) => {
           res = await fetch(
             `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.weatherKey}`
           );
+          if (!res.ok)
+            setError("Not found")
           result = await res.json();
-          return;
         }
         if (type == "weekly") {
           res = await fetch(
             `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${process.env.weatherKey}`
           );
+          if (!res.ok)
+            setError("Not found")
           result = await res.json();
-          setData(result);
-          return;
         }
       } catch (e) {
         console.error(e);
@@ -45,21 +49,25 @@ const Weather = (props) => {
   const [update, setUpdate] = useState(false);
   let currentParams = props.params.params;
   let widgetId = props.params._id;
-  const { fetchWeather, city, setCity, data } = useFindWeather(currentParams);
+  const { fetchWeather, city, setCity, data, error, setError } = useFindWeather(currentParams);
 
   const handleChange = async (e) => setCity(e.target.value);
   const handleSubmit = async () => {
-    await fetch("/api/widgets/update", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        req_type: "WEATHER",
-        _id: widgetId,
-        city: city,
-      }),
-    });
-    await fetchWeather();
-    setUpdate(!update);
+    try {
+      await fetch("/api/widgets/update", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          req_type: "WEATHER",
+          _id: widgetId,
+          city: city,
+        }),
+      });
+      await fetchWeather();
+      setUpdate(!update);
+    } catch(e) {
+      console.error(e)
+    }
   };
 
   const handleClick = async (e) => {
@@ -75,7 +83,7 @@ const Weather = (props) => {
 
   return (
     <div>
-      {data && currentParams.type == "daily" && (
+      {error && <h1>{error}</h1> || data && currentParams.type == "daily" && (
         <div className="flex flex-col justify-center py-12">
           <div className="relative max-w-xl mx-auto">
             <div className="relative bg-white shadow-lg rounded-3xl p-4 bg-clip-padding bg-opacity-60 border border-gray-100">
@@ -167,7 +175,7 @@ const Weather = (props) => {
         </div>
       )}
       <div>
-        {data && currentParams.type == "weekly" && (
+        {error && <h1>{error}</h1> || data && currentParams.type == "weekly" && (
           <div className="py-12">
             <div className="relative max-w-xl mx-auto">
               <div className="flex flex-col relative bg-white shadow-lg rounded-3xl p-4 bg-clip-padding bg-opacity-60 border border-gray-100">

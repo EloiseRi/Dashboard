@@ -60,6 +60,7 @@ const Crypto = (props) => {
   const [update, setUpdate] = useState(false);
   const [value, setValue] = useState(new Date());
   let defaultPair = props.params.params.pair;
+  let refreshRate = props.params.params.refreshRate;
   let widgetId = props.params._id;
   const { find, symbol, setSymbol, data, error } = useFindTicker(defaultPair);
 
@@ -80,13 +81,16 @@ const Crypto = (props) => {
   const handleClick = async (e) => {
     props.deleteWidget(widgetId);
   };
+
   useEffect(() => {
     find();
-    const interval = setInterval(() => setValue(new Date()), 10000);
+    const interval = setInterval(() => setValue(new Date()), refreshRate);
     return () => {
       clearInterval(interval);
     };
   }, [update, value]);
+
+  console.log(data)
 
   return (
     <>
