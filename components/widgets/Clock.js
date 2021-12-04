@@ -62,7 +62,7 @@ const WClock = (props) => {
     <div>
       <div className="flex flex-col justify-center py-12">
         <div className="relative max-w-xl mx-auto">
-          <div className="relative bg-white shadow-lg rounded-3xl p-8 bg-clip-padding bg-opacity-60 border border-gray-100">
+          <div className="relative bg-white shadow-lg rounded-3xl px-6 py-4 bg-clip-padding bg-opacity-60 border border-gray-100">
             <button className="absolute left-4 top-2 text-black hover:text-red-600">
               <FontAwesomeIcon
                 className="h-3"
@@ -70,35 +70,35 @@ const WClock = (props) => {
                 onClick={handleClick}
               ></FontAwesomeIcon>
             </button>
-            <div className="mb-4">
+            <div className="mb-2 mt-4 text-xl">
               {" "}
               {moment.tz(data.timezone).format("LTS")}
             </div>
             <Clock value={moment.tz(data.timezone).format("LTS")} />
             <div className="mt-4">{data.timezone}</div>
-          </div>
-        </div>
-        <div className="relative pt-2">
+        <div className="mt-2 flex flex-col">
           <input
             type="text"
-            className="h-6 w-52 pl-2 rounded-lg z-0 focus:shadow border-purple-100 focus:outline-none"
+            className="mt-2 mx-auto h-6 w-32 pl-2 rounded-lg z-0 focus:shadow border-purple-100 focus:outline-none"
             placeholder={continent}
             onChange={handleChangeContinent}
-          />
+            />
           <input
             type="text"
-            className="h-6 w-52 pl-2 rounded-lg z-0 focus:shadow border-purple-100 focus:outline-none"
+            className="mt-2 mx-auto h-6 w-32 pl-2 rounded-lg z-0 focus:shadow border-purple-100 focus:outline-none"
             placeholder={country}
             onChange={handleChangeCountry}
-          />
-          <div className="absolute top-2 right-0">
+            />
+          <div className="absolute bottom-9 right-1">
             {" "}
             <button
               className="text-black h-6 rounded-md pl-2 pr-2 bg-opacity-50 hover:text-purple-500"
               onClick={handleSubmit}
-            >
+              >
               <FontAwesomeIcon className="h-3" icon={faSync}></FontAwesomeIcon>
             </button>{" "}
+              </div>
+            </div>
           </div>
         </div>
       </div>
