@@ -1,11 +1,12 @@
 export default function About({ data }) {
+  let currentDate = new Date()
   let data =
   {
     "client": {
       "host": RemoteAddr
     },
     "server": {
-      "current_time": 1638640891,
+      "current_time": currentDate,
       "services": [{
         "name": "weather",
         "widgets": [{
