@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const KRAKEN_DATA_LABELS = Object.freeze({
   a: "Ask",
@@ -35,7 +38,7 @@ const useFindTicker = (pair) => {
         if (error.length > 0) {
           setError(error);
           return;
-        }
+        } else setError(null);
 
         setData(
           Object.keys(result).reduce(
@@ -49,15 +52,20 @@ const useFindTicker = (pair) => {
       } catch (e) {
         console.error(e);
       }
+      
     },
   };
 };
 
 const Crypto = (props) => {
   const [update, setUpdate] = useState(false);
+  const [value, setValue] = useState(new Date());
   let defaultPair = props.params.params.pair;
+  let refreshRate = props.params.params.refreshRate;
   let widgetId = props.params._id;
   const { find, symbol, setSymbol, data, error } = useFindTicker(defaultPair);
+
+  let t = defaultPair.split("EUR").length - 1;
 
   const handleSubmit = async () => {
     find();
@@ -65,50 +73,93 @@ const Crypto = (props) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        req_type: 'CRYPTO',
+        req_type: "CRYPTO",
         _id: widgetId,
-        pair: symbol
+        pair: symbol,
       }),
     });
     setUpdate(!update);
   };
   const handleChange = async (e) => setSymbol(e.target.value);
+  const handleClick = async (e) => {
+    props.deleteWidget(widgetId);
+  };
 
   useEffect(() => {
     find();
-  }, [update]);
+    const interval = setInterval(() => setValue(new Date()), refreshRate);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [update, value]);
 
   return (
     <>
       <div>
-        <h2>Search Crypto Currency Data</h2>
-        <div>
-          <input
-            type="text"
-            placeholder={defaultPair}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <button onClick={handleSubmit}>Search</button>
+        <div className="flex flex-col justify-center py-12">
+          <div className="relative max-w-xl mx-auto">
+            <div className="relative bg-white shadow-lg rounded-3xl pb-8 py-6 px-6 bg-clip-padding bg-opacity-60 border border-gray-100">
+              <button
+                className="absolute bottom-1 text-black hover:text-red-600"
+                onClick={handleClick}
+              >
+                <FontAwesomeIcon
+                  className="h-3"
+                  icon={faTrashAlt}
+                ></FontAwesomeIcon>
+              </button>
+              <h2 className="text-purple-800 text-xl mb-2">
+                Search Crypto Currency Data
+              </h2>
+              <div className="relative pt-2">
+                <input
+                  className="h-8 w-60 pl-2 rounded-lg z-0 focus:shadow border-purple-100 focus:outline-none"
+                  type="text"
+                  placeholder={defaultPair}
+                  onChange={handleChange}
+                />
+                <div className="absolute top-3 right-4">
+                  {" "}
+                  <button className="pr-2" onClick={handleSubmit}>
+                    <FontAwesomeIcon
+                      className="h-4 text-gray-400 hover:text-purple-400"
+                      icon={faSearch}
+                    ></FontAwesomeIcon>
+                  </button>
+                </div>
+              </div>
+              {/*  */}
+              {(error && <h1>{error}</h1>) ||
+                (data && (
+                  <div className="w-56 mx-6 mt-6 px-6 border border-purple-500 rounded-xl bg-gray-200">
+                    <div className="pt-4 text-2xl">
+                      {t > 0 ? "€ " : "$ "}
+                      {(data.a[0] * 100) / 100}
+                    </div>
+                    <div className="pt-1 text-sm">
+                      {(((data.c[0] - data.o) / data.c[0]) * 100).toFixed(2)}{" "}
+                      %
+                    </div>
+                    <div className="flex flex-row mx-auto py-4 place-content-center">
+                      <div className="mr-3">
+                        {" "}
+                        Volume {((data.v[0] * 100) / 100).toFixed(2)}
+                      </div>
+                      <div className="mr-3">
+                        {" "}
+                        Low {((data.l[0] * 100) / 100).toFixed(2)}
+                      </div>
+                      <div className="">
+                        {" "}
+                        High {((data.h[0] * 100) / 100).toFixed(2)}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
         </div>
       </div>
-      {/*  */}
-      {(error && <h1>{error}</h1>) ||
-        (data && (
-          <div>
-            {Object.keys(data).map((dataKey, i) => (
-              <div key={`${dataKey}-${i}`}>
-                <h3>
-                  {Array.isArray(data[dataKey])
-                    ? data[dataKey][0]
-                    : data[dataKey]}
-                </h3>
-                <p>{KRAKEN_DATA_LABELS[dataKey]}</p>
-              </div>
-            ))}
-          </div>
-        ))}
     </>
   );
 };

@@ -14,7 +14,7 @@ export default async function handler(req, res) {
         response = await db.collection("widgets").updateOne(
           { _id: _idObj },
           {
-            $set: { params: { pair: req.body.pair } },
+            $set: { "params.pair": req.body.pair },
           }
         );
         res.status(200).json(response);
@@ -24,6 +24,15 @@ export default async function handler(req, res) {
           { _id: _idObj },
           {
             $set: { "params.city": req.body.city },
+          }
+        );
+        res.status(200).json(response);
+        break;
+      case "CLOCK":
+        response = await db.collection("widgets").updateOne(
+          { _id: _idObj },
+          {
+            $set: { "params.country": req.body.country, "params.continent": req.body.continent },
           }
         );
         res.status(200).json(response);
