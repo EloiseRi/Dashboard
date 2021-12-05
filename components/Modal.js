@@ -4,8 +4,6 @@ import Weather from "./services/Weather";
 import Clock from "./services/Clock";
 import Crypto from "./services/Crypto";
 import Movies from "./services/Movies";
-import Spotify from "./services/Spotify";
-
 
 Modal.setAppElement("#__next");
 
@@ -26,15 +24,7 @@ const customStyles = {
 
 const WidgetModal = ({ openModal, toggleModal, refreshData }) => {
   const [type, setType] = useState(null);
-  // const layout = [
-  //   { i: 'a', x: 0, y: 0, w: 2, h: 4, },
-  //   { i: 'b', x: 0, y: 2, w: 2, h: 4, },
-  //   { i: 'c', x: 0, y: 2, w: 2, h: 4, },
-  //   { i: 'd', x: 0, y: 2, w: 2, h: 4, },
-  //   { i: 'e', x: 0, y: 2, w: 2, h: 4, },
-  //   { i: 'f', x: 0, y: 2, w: 2, h: 4, },
 
-  // ];
   return (
     <Modal isOpen={openModal} style={customStyles}>
       {!type && (
@@ -55,9 +45,6 @@ const WidgetModal = ({ openModal, toggleModal, refreshData }) => {
             </div>
             <div onClick={() => setType("movies")} className="py-20 rounded-xl border-2 border-gray-500 hover:bg-purple-200">
               The Movie DB
-            </div>
-            <div onClick={() => setType("spotify")} className="py-20 rounded-xl border-2 border-gray-500 hover:bg-purple-200">
-              Spotify
             </div>
           </div>
         </div>
@@ -80,9 +67,6 @@ const WidgetModal = ({ openModal, toggleModal, refreshData }) => {
           )}
           {type == "movies" && (
             <Movies toggleModal={toggleModal} resetServiceType={setType} refreshData={refreshData} />
-          )}
-          {type == "spotify" && (
-            <Spotify toggleModal={toggleModal} resetServiceType={setType} refreshData={refreshData} />
           )}
           <div>
           </div>

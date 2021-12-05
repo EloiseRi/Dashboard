@@ -155,15 +155,15 @@ const Movies = (props) => {
                   showDots={false}
                   responsive={responsive}
                   arrows={true}
-                  ssr={false} // means to render carousel on server-side.
+                  ssr={true} // means to render carousel on server-side.
                   infinite={true}
                   autoPlay={true}
                   autoPlaySpeed={4000}
                   keyBoardControl={true}
                   customTransition="all .5"
                   transitionDuration={500}
-                  partialVisbile={true}
-                  containerClass="carousel-container relative z-0 z-0"
+                  partialVisibile={true}
+                  containerClass="carousel-container relative z-0"
                   dotListClass="custom-dot-list-style"
                   itemClass="carousel-item-padding-40-px"
                 >
@@ -202,7 +202,7 @@ const Movies = (props) => {
                   showDots={false}
                   responsive={responsive}
                   arrows={true}
-                  ssr={false} // means to render carousel on server-side.
+                  ssr={true} // means to render carousel on server-side.
                   infinite={true}
                   autoPlay={true}
                   autoPlaySpeed={5000}
@@ -248,7 +248,7 @@ const Movies = (props) => {
                   showDots={false}
                   responsive={responsive}
                   arrows={true}
-                  ssr={false} // means to render carousel on server-side.
+                  ssr={true} // means to render carousel on server-side.
                   infinite={true}
                   autoPlay={true}
                   autoPlaySpeed={5000}
@@ -294,7 +294,7 @@ const Movies = (props) => {
                   showDots={false}
                   responsive={responsive}
                   arrows={true}
-                  ssr={false} // means to render carousel on server-side.
+                  ssr={true} // means to render carousel on server-side.
                   infinite={true}
                   autoPlay={true}
                   autoPlaySpeed={5000}

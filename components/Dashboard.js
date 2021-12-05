@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Weather from "./widgets/Weather";
 import Clock from "./widgets/Clock";
 import Crypto from "./widgets/Crypto";
 import Movies from "./widgets/Movies";
-import Spotify from "./widgets/Spotify";
 
 const Dashboard = ({ widgets, refreshData }) => {
   const deleteWidget = async (widgetId) => {
@@ -45,17 +44,9 @@ const Dashboard = ({ widgets, refreshData }) => {
             return (
               <Movies key={index} params={widget} deleteWidget={deleteWidget} />
             );
-          if (widget.api_name == "spotify")
-            return (
-              <Spotify
-                key={index}
-                params={widget}
-                deleteWidget={deleteWidget}
-              />
-            );
         })}{" "}
       </div>
-      <button onClick={() => refreshData()} >Refresh</button>
+      <button onClick={() => refreshData()}>Refresh</button>
     </div>
   );
 };
