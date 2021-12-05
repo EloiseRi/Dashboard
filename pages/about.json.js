@@ -57,16 +57,6 @@ export default function About({ data, host }) {
             "type": "string"
           }]
         }]
-      }, {
-        "name": "spotify",
-        "widgets": [{
-          "name": "Spotify",
-          "description": "",
-          "params": [{
-            "name": "",
-            "type": ""
-          }]
-        }]
       },
       ]
     }
