@@ -163,7 +163,7 @@ const Movies = (props) => {
                   customTransition="all .5"
                   transitionDuration={500}
                   partialVisbile={true}
-                  containerClass="carousel-container relative z-0"
+                  containerClass="carousel-container relative z-0 z-0"
                   dotListClass="custom-dot-list-style"
                   itemClass="carousel-item-padding-40-px"
                 >
@@ -209,7 +209,7 @@ const Movies = (props) => {
                   keyBoardControl={true}
                   customTransition="all .5"
                   transitionDuration={500}
-                  containerClass="carousel-container relative"
+                  containerClass="carousel-container relative z-0"
                   dotListClass="custom-dot-list-style"
                   itemClass="carousel-item-padding-10-px"
                 >
@@ -255,7 +255,7 @@ const Movies = (props) => {
                   keyBoardControl={true}
                   customTransition="all .5"
                   transitionDuration={500}
-                  containerClass="carousel-container relative"
+                  containerClass="carousel-container relative z-0"
                   dotListClass="custom-dot-list-style"
                   itemClass="carousel-item-padding-10-px"
                 >
@@ -301,7 +301,7 @@ const Movies = (props) => {
                   keyBoardControl={true}
                   customTransition="all .5"
                   transitionDuration={500}
-                  containerClass="carousel-container relative"
+                  containerClass="carousel-container relative z-0"
                   dotListClass="custom-dot-list-style"
                   itemClass="carousel-item-padding-10-px"
                 >
